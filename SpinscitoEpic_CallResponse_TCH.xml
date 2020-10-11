@@ -1,0 +1,284 @@
+<channel version="3.8.1">
+  <id>6fca82c1-23cb-493d-829d-6215a56eceeb</id>
+  <nextMetaDataId>2</nextMetaDataId>
+  <name>SpinscitoEpic_CallResponse_TCH</name>
+  <description></description>
+  <revision>1</revision>
+  <sourceConnector version="3.8.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.vm.VmReceiverProperties" version="3.8.1">
+      <pluginProperties/>
+      <sourceConnectorProperties version="3.8.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+    </properties>
+    <transformer version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Fetch order from db</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var dbConn = null;
+var finalOutput = &quot;&quot;;
+var header=&quot;##INI=CAL&quot;;
+var template=&quot;1,*\r\n&quot;+
+&quot;20,T\r\n&quot;+
+&quot;30,12\r\n&quot;+
+&quot;50, $EpicUserTBD \r\n&quot;+
+&quot;51, $DepartmentTBD \r\n&quot;+
+&quot;55, $Timecallwasmadeininstantformat \r\n&quot;+
+&quot;60, $Comment\r\n&quot;+
+&quot;85, $Patientphonenumber \r\n&quot;+
+&quot;95,2\r\n&quot;+
+&quot;100,1\r\n&quot;+
+&quot;110, $PatientID \r\n&quot;+
+&quot;1000, $PatientID \r\n&quot;+
+&quot;1020,7\r\n&quot;+
+&quot;1050, $OrderID \r\n&quot;+
+&quot;2000, $CallOutcomecategorylist \r\n&quot;;
+try 
+{
+	dbConn = getConnection();//getdbConnection();
+	var result = dbConn.executeCachedQuery(&quot;select * from outbound.sso_spinsci_diallist_order limit 20&quot;);
+	logger.debug(&quot;result size::: &quot;+result.size());
+	while(result.next()){
+		var args={
+			//EpicUserTBD:&quot;charan123&quot;,
+			//DepartmentTBD:&quot;Dept123&quot;,
+			//Timecallwasmadeininstantformat:&quot;2020-10-06&quot;,
+			Comment:&quot;comment&quot;,
+			Patientphonenumber:result.getString(&quot;patient_phone_num&quot;),
+			PatientID:result.getString(&quot;patient_mrn&quot;),
+			OrderID:result.getString(&quot;appointment_id&quot;),
+			//CallOutcomecategorylist:&quot;&quot;
+		};
+		var res= mergeMsg(template,args).replaceAll(&quot;, &quot; ,&apos;,&apos;);
+		finalOutput = finalOutput+res;
+	}
+	
+}
+catch (e)
+{
+	logger.error(channelName + &quot; dource tranformar exception: &quot; + e);
+
+}
+finally
+{
+	if (dbConn) { dbConn.close(); }
+}
+
+
+//res=res.replace(/ /g,&apos;&apos;)
+logger.info(&quot;Result===&gt;&quot;+finalOutput);
+
+channelMap.put(&apos;out&apos;,finalOutput);
+channelMap.put(&apos;header&apos;,header);
+
+
+function mergeMsg(templateText,dataMap){
+	
+	var rs = new Packages.org.apache.velocity.runtime.RuntimeSingleton.getRuntimeServices(); 
+	var sr = new Packages.java.io.StringReader(templateText);
+	var sn = rs.parse(sr, &quot;Booking Information&quot;);
+	// Initiate Template Object
+	var t = new Packages.org.apache.velocity.Template();
+	t.setRuntimeServices(rs);
+	t.setData(sn);
+	t.initDocument();
+	
+	var vc = new Packages.org.apache.velocity.VelocityContext();
+	for (var key in dataMap) {
+		vc.put(key, dataMap[key]);
+	}
+	
+	var sw = new Packages.java.io.StringWriter();
+	t.merge(vc, sw);
+	     
+	//logger.info(&quot;msg value---&gt;&quot;+sw.toString());
+	return sw.toString();
+}</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+      </elements>
+      <inboundTemplate encoding="base64"></inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>RAW</inboundDataType>
+      <outboundDataType>RAW</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.8.1">
+      <elements/>
+    </filter>
+    <transportName>Channel Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.8.1">
+      <metaDataId>1</metaDataId>
+      <name>Write_File_Content</name>
+      <properties class="com.mirth.connect.connectors.file.FileDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <scheme>FILE</scheme>
+        <host>C:/Users/Administrator/Documents/Testing/msgBuilder</host>
+        <outputPattern>SSO-Response.txt</outputPattern>
+        <anonymous>true</anonymous>
+        <username>anonymous</username>
+        <password>anonymous</password>
+        <timeout>10000</timeout>
+        <keepConnectionOpen>true</keepConnectionOpen>
+        <maxIdleTime>0</maxIdleTime>
+        <secure>true</secure>
+        <passive>true</passive>
+        <validateConnection>true</validateConnection>
+        <outputAppend>true</outputAppend>
+        <errorOnExists>false</errorOnExists>
+        <temporary>false</temporary>
+        <binary>false</binary>
+        <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
+        <template>${header}
+${out}
+</template>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>File Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.8.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>true</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.8.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1602077652468</time>
+        <timezone>UTC</timezone>
+      </lastModified>
+      <pruningSettings>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+  </exportData>
+</channel>

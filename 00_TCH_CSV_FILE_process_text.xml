@@ -1,0 +1,681 @@
+<channel version="3.8.1">
+  <id>2ad5a1bc-ade2-498e-9c10-7569e8608338</id>
+  <nextMetaDataId>14</nextMetaDataId>
+  <name>00_TCH_CSV_FILE_process_text</name>
+  <description></description>
+  <revision>2</revision>
+  <sourceConnector version="3.8.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.file.FileReceiverProperties" version="3.8.1">
+      <pluginProperties/>
+      <pollConnectorProperties version="3.8.1">
+        <pollingType>INTERVAL</pollingType>
+        <pollOnStart>true</pollOnStart>
+        <pollingFrequency>600000</pollingFrequency>
+        <pollingHour>0</pollingHour>
+        <pollingMinute>0</pollingMinute>
+        <cronJobs/>
+        <pollConnectorPropertiesAdvanced>
+          <weekly>true</weekly>
+          <inactiveDays>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </inactiveDays>
+          <dayOfMonth>1</dayOfMonth>
+          <allDay>true</allDay>
+          <startingHour>8</startingHour>
+          <startingMinute>0</startingMinute>
+          <endingHour>17</endingHour>
+          <endingMinute>0</endingMinute>
+        </pollConnectorPropertiesAdvanced>
+      </pollConnectorProperties>
+      <sourceConnectorProperties version="3.8.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>false</respondAfterProcessing>
+        <processBatch>true</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <scheme>FILE</scheme>
+      <host>C:/Users/Administrator/Documents/Testing</host>
+      <fileFilter>*.txt</fileFilter>
+      <regex>false</regex>
+      <directoryRecursion>false</directoryRecursion>
+      <ignoreDot>true</ignoreDot>
+      <anonymous>true</anonymous>
+      <username>anonymous</username>
+      <password>anonymous</password>
+      <timeout>10000</timeout>
+      <secure>true</secure>
+      <passive>true</passive>
+      <validateConnection>true</validateConnection>
+      <afterProcessingAction>MOVE</afterProcessingAction>
+      <moveToDirectory>C:/Users/Administrator/Documents/Testing/process</moveToDirectory>
+      <moveToFileName>${originalFilename}_processed</moveToFileName>
+      <errorReadingAction>NONE</errorReadingAction>
+      <errorResponseAction>DELETE</errorResponseAction>
+      <errorMoveToDirectory>C:/Users/Admin/Documents/MirthExamples/csvexamples/error</errorMoveToDirectory>
+      <errorMoveToFileName>${DATE}.csv</errorMoveToFileName>
+      <checkFileAge>false</checkFileAge>
+      <fileAge>7200000</fileAge>
+      <fileSizeMinimum>0</fileSizeMinimum>
+      <fileSizeMaximum></fileSizeMaximum>
+      <ignoreFileSizeMaximum>true</ignoreFileSizeMaximum>
+      <sortBy>date</sortBy>
+      <binary>false</binary>
+      <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
+    </properties>
+    <transformer version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>CSV to JSON</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var json = XmlUtil.toJson(msg.toXMLString())
+//logger.debug(&quot;message from source transformation ---&gt;&quot;+$(&apos;batchSequenceId&apos;));
+
+if ($(&apos;batchSequenceId&apos;) == 1) {
+	fetchingColMapping();
+}
+
+var output = {
+	headerMap: JSON.parse($gc(&apos;headerMap&apos;)),
+	data : setColsForDataRows(json)
+}
+
+channelMap.put(&quot;Output&quot;,JSON.stringify(output));
+
+function fetchingColMapping(){
+	var dbConn = null;
+	
+	var colMap={};
+	try
+	{
+		dbConn = DatabaseConnectionFactory.createDatabaseConnection(
+			configurationMap.get(&quot;DB_DRIVER_BAAS&quot;),
+			configurationMap.get(&quot;DB_NAME_BAAS&quot;),
+			configurationMap.get(&quot;DB_USER_BAAS&quot;),
+			configurationMap.get(&quot;DB_PASS_BAAS&quot;)
+		);
+	//var stmt = &quot;select * from outbound_config.file_db_col_mappig where file_name = &apos;&quot;+$(&apos;originalFilename&apos;)+&quot;&apos;;&quot;
+	var stmt = &quot;select * from outbound_config.file_db_col_mappig where file_name = &apos;Sample.txt&apos;;&quot;
+	//logger.debug(&quot;stmt:::::::&quot;+stmt);
+	var rows = dbConn.executeCachedQuery(
+            stmt
+        );
+		//logger.info(&quot;rows size&quot;+rows.size());
+        while (rows.next()) {
+            var key = rows.getString(&apos;column_pos&apos;);
+            var value = rows.getString(&apos;db_col_name&apos;);
+            if(value==&apos;appointment_id&apos;){
+            	$gc(&apos;db_appt_col_name&apos;,key);
+            }
+            colMap[key]=value;
+        }
+        
+	}catch(e){
+		logger.error(e);
+		throw e;
+	}finally{
+		if(dbConn){
+			dbConn.close();
+		}
+		channelMap.put(&apos;headerMap&apos;,JSON.stringify(colMap));
+		$gc(&apos;headerMap&apos;,JSON.stringify(colMap));
+	}
+}
+function setColsForDataRows(json){
+	//var header= JSON.parse($gc(&apos;header&apos;));
+	
+	var row = JSON.parse(json).delimited.row;
+	var dataRow = {};
+	for(col in row){
+		dataRow[col.replace(&quot;column&quot;,&quot;&quot;)]=row[col]
+	}
+	if(dataRow[$gc(&apos;1&apos;)]){
+		var apptId = dataRow[$gc(&apos;1&apos;)];
+		var arr = $gc(&apos;processedAppt&apos;);
+	     logger.info(&quot;apptId:::::::::::::::::::::::&quot;+apptId)
+	     if(apptId){
+		    arr.push(apptId);
+		    $gc(&apos;processedAppt&apos;,arr)
+	     }
+	}
+	return dataRow;
+}
+function validatingFile(){
+	var tempHeader = JSON.parse($gc(&apos;header&apos;));
+	var header= [];
+	for(var ele in tempHeader){
+		header.push(tempHeader[ele]);
+	}
+	var headerMap= Object.keys(JSON.parse($gc(&apos;headerMap&apos;)));
+     for(var ele in header){
+     	if(!arrayContains(headerMap,header[ele])){
+     	    throw &quot;invalid file&quot;;	
+     	}
+     }
+
+	
+	
+}</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+      </elements>
+      <inboundTemplate encoding="base64"></inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>DELIMITED</inboundDataType>
+      <outboundDataType>DELIMITED</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+          <columnDelimiter>|</columnDelimiter>
+          <recordDelimiter>\n</recordDelimiter>
+          <quoteToken>&quot;</quoteToken>
+          <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+          <quoteEscapeToken>\</quoteEscapeToken>
+          <numberedRows>false</numberedRows>
+          <ignoreCR>true</ignoreCR>
+        </serializationProperties>
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+          <columnDelimiter>,</columnDelimiter>
+          <recordDelimiter>\n</recordDelimiter>
+          <quoteToken>&quot;</quoteToken>
+          <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+          <quoteEscapeToken>\</quoteEscapeToken>
+        </deserializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+          <splitType>Record</splitType>
+          <batchSkipRecords>0</batchSkipRecords>
+          <batchMessageDelimiter></batchMessageDelimiter>
+          <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+          <batchGroupingColumn></batchGroupingColumn>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+          <columnDelimiter>,</columnDelimiter>
+          <recordDelimiter>\n</recordDelimiter>
+          <quoteToken>&quot;</quoteToken>
+          <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+          <quoteEscapeToken>\</quoteEscapeToken>
+          <numberedRows>false</numberedRows>
+          <ignoreCR>true</ignoreCR>
+        </serializationProperties>
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+          <columnDelimiter>,</columnDelimiter>
+          <recordDelimiter>\n</recordDelimiter>
+          <quoteToken>&quot;</quoteToken>
+          <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+          <quoteEscapeToken>\</quoteEscapeToken>
+        </deserializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+          <splitType>Record</splitType>
+          <batchSkipRecords>0</batchSkipRecords>
+          <batchMessageDelimiter></batchMessageDelimiter>
+          <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+          <batchGroupingColumn></batchGroupingColumn>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.rulebuilder.RuleBuilderRule version="3.8.1">
+          <name>Accept message if &quot;$(&quot;batchComplete&quot;)&quot; does not equal &apos;false&apos;</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>false</enabled>
+          <field>$(&quot;batchComplete&quot;)</field>
+          <condition>NOT_EQUAL</condition>
+          <values>
+            <string>&apos;false&apos;</string>
+          </values>
+        </com.mirth.connect.plugins.rulebuilder.RuleBuilderRule>
+      </elements>
+    </filter>
+    <transportName>File Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.8.1">
+      <metaDataId>10</metaDataId>
+      <name>Store data</name>
+      <properties class="com.mirth.connect.connectors.vm.VmDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>true</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>4</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <channelId>c73fb47f-0bf4-480b-ab2d-91e552d22714</channelId>
+        <channelTemplate>${Output}</channelTemplate>
+        <mapVariables/>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <inboundDataType>DELIMITED</inboundDataType>
+        <outboundDataType>DELIMITED</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+            <name>consume response</name>
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>true</enabled>
+            <script>var out = $(&apos;out&apos;);
+var meta = $(&apos;meta&apos;);
+var result = {};
+
+try 
+{
+
+//	logger.debug($(&apos;Channel Name&apos;) +&quot; consume response&quot;+msg);
+//	result = JSON.parse(msg);
+//	logger.debug(&quot;0-------&quot;+result);
+//	logger.debug(&quot;1-------&quot;+JSON.stringify(result));
+//	// merge the inner result with the one we&apos;re holding onto.
+//	var appt_id = result.output.appointment_id;
+//	logger.info(&quot;--------appt_id----------&quot;+appt_id)
+//	var arr = $gc(&apos;processedAppt&apos;);
+//	logger.info(&quot;arr:::::::::::::::::::::::&quot;+arr)
+//	if(appt_id){
+//		arr.push(appt_id);
+//		$gc(&apos;processedAppt&apos;,arr)
+//	}
+//	Object.assign(out,  result.output); 
+//	Object.assign(meta, result.metadata); 
+//	channelMap.put(&apos;responseCode&apos;, meta.http_code);
+}
+catch (e)
+{
+	throw e
+	result = msg.toString();
+	//out.results.push(result);
+}</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements>
+          <com.mirth.connect.plugins.rulebuilder.RuleBuilderRule version="3.8.1">
+            <name>Accept message if &quot;$(&apos;batchSequenceId&apos;)&quot; does not equal 1</name>
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>false</enabled>
+            <field>$(&apos;batchSequenceId&apos;)</field>
+            <condition>NOT_EQUAL</condition>
+            <values>
+              <string>1</string>
+            </values>
+          </com.mirth.connect.plugins.rulebuilder.RuleBuilderRule>
+        </elements>
+      </filter>
+      <transportName>Channel Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+    <connector version="3.8.1">
+      <metaDataId>12</metaDataId>
+      <name>validate record</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <script>logger.info(&quot;--all app id---&quot;+JSON.stringify($gc(&apos;processedAppt&apos;)));
+var filedAppts = $gc(&apos;processedAppt&apos;);
+var dbAppts = [];
+var dbConn;
+try
+{
+	dbConn = DatabaseConnectionFactory.createDatabaseConnection(
+		configurationMap.get(&quot;DB_DRIVER_BAAS&quot;),
+		configurationMap.get(&quot;DB_NAME_BAAS&quot;),
+		configurationMap.get(&quot;DB_USER_BAAS&quot;),
+		configurationMap.get(&quot;DB_PASS_BAAS&quot;)
+	);
+
+	
+
+		var query = &quot;select appointment_id from outbound.sso_spinsci_diallist_order where is_scheduled =&apos;FALSE&apos;&quot;;
+			
+		var keys = dbConn.executeCachedQuery(query);
+		while(keys.next()){
+			dbAppts.push(keys.getString(&apos;appointment_id&apos;));
+		}
+		dbAppts = dbAppts.filter(e=&gt; !arrayContains(filedAppts,e));
+		logger.info(&quot;------filtered one&quot;+JSON.stringify(dbAppts));
+		if(dbAppts){
+			var addInHistoryQuery = &quot;insert into outbound.dail_list_queue_history (dail_list_queue_id , transaction_type , camp_id,ref_id, attempt_date, attempt_status, attempt_number, msg_type, channel_type) &quot;
+							+&quot; (SELECT id, &apos;DELETE&apos; , camp_id,ref_id, attempt_date, attempt_status, attempt_number, msg_type, channel_type from outbound.dail_list_queue where ref_id in (&apos;&quot;+dbAppts.join(&quot;&apos;,&apos;&quot;)+&quot;&apos;))&quot; ;
+			dbConn.executeUpdate(addInHistoryQuery);
+			logger.info(&quot;delete query------&gt;&quot;+&quot;delete from outbound.dail_list_queue where ref_id in (&apos;&quot;+dbAppts.join(&quot;&apos;,&apos;&quot;)+&quot;&apos;)&quot;)
+			dbConn.executeUpdate(&quot;delete from outbound.dail_list_queue where ref_id in (&apos;&quot;+dbAppts.join(&quot;&apos;,&apos;&quot;)+&quot;&apos;)&quot;);
+		}
+		
+}catch(e){
+	throw e;
+} finally {
+	
+	if(dbConn){
+		dbConn.close();	
+	}
+}
+
+
+</script>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <inboundDataType>DELIMITED</inboundDataType>
+        <outboundDataType>DELIMITED</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>DELIMITED</inboundDataType>
+        <outboundDataType>DELIMITED</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDataTypeProperties" version="3.8.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedSerializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+            <numberedRows>false</numberedRows>
+            <ignoreCR>true</ignoreCR>
+          </serializationProperties>
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedDeserializationProperties" version="3.8.1">
+            <columnDelimiter>,</columnDelimiter>
+            <recordDelimiter>\n</recordDelimiter>
+            <quoteToken>&quot;</quoteToken>
+            <escapeWithDoubleQuote>true</escapeWithDoubleQuote>
+            <quoteEscapeToken>\</quoteEscapeToken>
+          </deserializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.delimited.DelimitedBatchProperties" version="3.8.1">
+            <splitType>Record</splitType>
+            <batchSkipRecords>0</batchSkipRecords>
+            <batchMessageDelimiter></batchMessageDelimiter>
+            <batchMessageDelimiterIncluded>false</batchMessageDelimiterIncluded>
+            <batchGroupingColumn></batchGroupingColumn>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements>
+          <com.mirth.connect.plugins.rulebuilder.RuleBuilderRule version="3.8.1">
+            <name>Accept message if &quot;$(&apos;batchComplete&apos;)&quot; equals true</name>
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>true</enabled>
+            <field>$(&apos;batchComplete&apos;)</field>
+            <condition>EQUALS</condition>
+            <values>
+              <string>true</string>
+            </values>
+          </com.mirth.connect.plugins.rulebuilder.RuleBuilderRule>
+        </elements>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>logger.debug(&quot;ORg MSG Prepros:: &quot;+message);
+logger.debug(&quot;PreProcessing::==&gt;&quot;+&quot;::batchComplete=&quot;+sourceMap.get(&apos;batchComplete&apos;)+&quot;::batchSequenceId=&quot;+sourceMap.get(&apos;batchSequenceId&apos;))
+
+if ($(&apos;batchSequenceId&apos;) == 1) {		
+     $gc(&apos;counter&apos;,1);	
+     $gc(&apos;processedAppt&apos;,[]);
+} else {
+	$gc(&apos;counter&apos;,parseInt($gc(&apos;counter&apos;))+1);
+}
+
+return message;</preprocessingScript>
+  <postprocessingScript>logger.debug(&quot;PostProcessing::==&gt;&quot;+&quot;::batchComplete=&quot;+sourceMap.get(&apos;batchComplete&apos;)+&quot;::batchSequenceId=&quot;+sourceMap.get(&apos;batchSequenceId&apos;)+&quot;batchSentCount==&gt;&quot;+$gc(&apos;batchSentCount&apos;))
+
+</postprocessingScript>
+  <deployScript></deployScript>
+  <undeployScript></undeployScript>
+  <properties version="3.8.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>PRODUCTION</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STOPPED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.8.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1602065281501</time>
+        <timezone>UTC</timezone>
+      </lastModified>
+      <pruningSettings>
+        <pruneMetaDataDays>1</pruneMetaDataDays>
+        <pruneContentDays>1</pruneContentDays>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+  </exportData>
+</channel>

@@ -1,0 +1,552 @@
+<channel version="3.8.1">
+  <id>488a510f-a644-4d83-a870-15ced0d2f1bc</id>
+  <nextMetaDataId>5</nextMetaDataId>
+  <name>Import_Contacts_UCCX_TCH</name>
+  <description>This channel is used to import the contacts for ucce</description>
+  <revision>12</revision>
+  <sourceConnector version="3.8.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.vm.VmReceiverProperties" version="3.8.1">
+      <pluginProperties/>
+      <sourceConnectorProperties version="3.8.1">
+        <responseVariable>d3</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+    </properties>
+    <transformer version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Out Object</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>true</enabled>
+          <script>// Default error response.
+var out = {};
+out.success = false;
+out.results = [];
+out.error = [];
+
+channelMap.put(&quot;out&quot;, out);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Metadata Object</name>
+          <sequenceNumber>1</sequenceNumber>
+          <enabled>true</enabled>
+          <script>// Default error response.
+var meta = {};
+meta.http_code = &quot;500&quot;;
+meta.audit_log = {};
+
+channelMap.put(&quot;responseCode&quot;, meta.http_code); // Default code if all goes wrong.
+channelMap.put(&quot;meta&quot;, meta);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Input Object</name>
+          <sequenceNumber>2</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var input = {};
+
+channelMap.put(&quot;input&quot;, input);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Determine Action from Input</name>
+          <sequenceNumber>3</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var out = $(&apos;out&apos;);
+var meta = $(&apos;meta&apos;);
+var input = $(&apos;input&apos;);
+
+try
+{
+	const incomingMessage = connectorMessage.getRawData();
+	logger.debug(&apos;inc msg : &apos;+JSON.stringify(incomingMessage));
+	const incomingMsg = incomingMessage;
+	logger.debug(&apos;ras msg : &apos;+JSON.stringify(incomingMsg));
+	meta[&apos;command&apos;] = &quot;CREATE&quot;; // Overwrite destination name.
+	
+}
+catch (e)
+{
+	logger.error(channelName + &quot; endpoint source transformer error: &quot; + e);
+	out.error.push(e);
+}</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Determine Destination Set</name>
+          <sequenceNumber>4</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var out = $(&apos;out&apos;);
+var meta = $(&apos;meta&apos;);
+
+//logger.debug(&apos;out.error : &apos;+out.error);
+//if (out.error.length &gt; 0)
+//{
+//	logger.debug(&apos;error&apos;);
+//	// if we had any errors, don&apos;t try to process.
+//	const error_message_set = [&quot;RETURN_VALUE&quot;]
+//	destinationSet.removeAllExcept(error_message_set);
+//}
+//else
+//{
+//	logger.debug(&apos;else [] &apos;);
+//	const process_message_set = [meta.command, &quot;CREATE&quot;, &quot;RETURN_VALUE&quot;];
+//	destinationSet.removeAllExcept(process_message_set);
+//}
+const process_message_set = [meta.command, &quot;CREATE&quot;, &quot;RETURN_VALUE&quot;];
+destinationSet.removeAllExcept(process_message_set);
+out[&apos;command&apos;] = meta.command; // for easier debugging</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>raw</name>
+          <sequenceNumber>5</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var msgs = connectorMessage.getRawData();
+logger.debug(&apos;msgs : &apos;+msgs);
+
+channelMap.put( &quot;dispMsgs&quot;, connectorMessage.getRawData());</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+      </elements>
+      <inboundTemplate encoding="base64"></inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>RAW</inboundDataType>
+      <outboundDataType>RAW</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.8.1">
+      <elements/>
+    </filter>
+    <transportName>Channel Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.8.1">
+      <metaDataId>4</metaDataId>
+      <name>CREATE</name>
+      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <host>${SSO_UCCX_URL}${id}/contacts</host>
+        <useProxyServer>false</useProxyServer>
+        <proxyAddress></proxyAddress>
+        <proxyPort></proxyPort>
+        <method>post</method>
+        <headers class="linked-hash-map"/>
+        <parameters class="linked-hash-map">
+          <entry>
+            <string>Authorization</string>
+            <list>
+              <string>${UCCX_token}</string>
+            </list>
+          </entry>
+        </parameters>
+        <responseXmlBody>false</responseXmlBody>
+        <responseParseMultipart>true</responseParseMultipart>
+        <responseIncludeMetadata>false</responseIncludeMetadata>
+        <responseBinaryMimeTypes>application/.*(?&lt;!json|xml)$|image/.*|video/.*|audio/.*</responseBinaryMimeTypes>
+        <responseBinaryMimeTypesRegex>true</responseBinaryMimeTypesRegex>
+        <multipart>false</multipart>
+        <useAuthentication>true</useAuthentication>
+        <authenticationType>Basic</authenticationType>
+        <usePreemptiveAuthentication>false</usePreemptiveAuthentication>
+        <username>${UCCX_username}</username>
+        <password>uccx12P@$$w0rdCCX</password>
+        <content>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;campaignContacts xmlns:xsi=&quot;https://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;campaignContacts.xsd&quot;&gt;
+   &lt;campaign name=&quot;IVRPredictive&quot;&gt;
+       &lt;refURL&gt;https://10.2.74.60/adminapi/campaign/125&lt;/refURL&gt;
+   &lt;/campaign&gt;
+   &lt;allowDuplicateContacts&gt;true&lt;/allowDuplicateContacts&gt;
+   &lt;csvdata&gt;
+Account Number, First Name, Last Name ,Phone1
+${contacts}
+   &lt;/csvdata&gt;
+&lt;/campaignContacts&gt;</content>
+        <contentType>application/xml</contentType>
+        <dataTypeBinary>false</dataTypeBinary>
+        <charset>UTF-8</charset>
+        <socketTimeout>30000</socketTimeout>
+      </properties>
+      <transformer version="3.8.1">
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+            <name>request input</name>
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>true</enabled>
+            <script>// get the message Obj and parse
+
+var req = JSON.parse(msg);
+logger.debug(&apos;reqs :&apos;+JSON.stringify(req));
+
+var msgId = req[0].MsgId;
+var PhoneNumber = req[0].PhoneNumber;
+//Add Cuntry code 
+//PhoneNumber = 91+PhoneNumber;
+//PhoneNumber = PhoneNumber;
+PhoneNumber = &apos;791021&apos;;
+var orderid = req[0].OrderID;
+var patientMRN = req[0].patientMRN;
+var patientfirstname = req[0].patientfirstname.trim();
+var patientlastname = req[0].patientlastname.trim();
+
+var accountNumber = orderid + &apos;@&apos; + patientMRN;
+var contact = accountNumber+&apos;,&apos;+patientfirstname+&apos;,&apos;+patientlastname+&apos;,&apos;+PhoneNumber;
+logger.debug(&apos;contact &apos;+contact);
+
+channelMap.put(&apos;contacts&apos;, contact);
+
+var dbConn = null;
+var uid = req[0].Camapaign_id;
+try {
+	//opening the database connection
+	dbConn = DatabaseConnectionFactory.createDatabaseConnection(
+		configurationMap.get(&apos;DB_DRIVER_BAAS&apos;),
+		configurationMap.get(&apos;DB_NAME_BAAS&apos;),
+		configurationMap.get(&apos;DB_USER_BAAS&apos;),
+		//configurationMap.get(&apos;DB_PASS_BAAS&apos;)
+		&apos;spinsci&apos;);
+	logger.debug(&quot;db conn:&quot; + dbConn);
+
+	// var declaration
+	var query = &quot;&quot;;
+	var queryResult = null;
+	var paramList = [];
+    	var id = &quot;&quot;;
+    	var dtype = &quot;&quot;;
+	// calling the function
+	query = getQuery();
+
+	paramList.push(uid);
+	logger.debug(&quot;paramList &quot; + paramList);
+	// executing the Query
+	queryResult = dbConn.executeCachedQuery(query, paramList);
+	logger.debug(&quot;query result: &quot; + queryResult);
+      
+	// getting the results from database
+	if (queryResult.next()) {
+		id = queryResult.getString(&apos;ciscoid&apos;);
+		// Hardcoading ID as no UCCX id available in dev db
+		id=&apos;125&apos;;		
+		dtype = queryResult.getString(&apos;dtype&apos;);
+		logger.debug(&apos;id inside if &apos;+id);
+		logger.debug(&apos;dtype inside if &apos;+dtype);   
+	}
+
+	logger.debug(&apos;id &apos;+id);
+	logger.debug(&apos;dtype &apos;+dtype);
+	if(id != null) {
+		logger.debug(&apos;id inside &apos;+id);
+		channelMap.put(&apos;id&apos;, id);
+	}
+}catch(exp) {
+	logger.error(&apos;error in executing &apos;+exp);
+}
+
+function getQuery() {
+
+	var query = &quot;SELECT * from sso_spinsci_execute_getciscoid_dtype(? ::uuid)&quot;;
+	logger.debug(&apos;query &apos;+query);
+	return query;
+}</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+            <sequenceNumber>0</sequenceNumber>
+            <enabled>true</enabled>
+            <script>var results = [];
+var xmlObj = null;
+var xmlString = &quot;&quot;;
+var propxml = &quot;&quot;;
+var propXmlString = &quot;&quot;;
+var convertedXml = null;
+var json_data = null;
+xmlObj = (new XML(msg));
+var id = $(&apos;id&apos;);
+// converting XML to string
+xmlString = xmlObj.toString();
+// replacing the &apos;/&lt;/g&apos; with &apos;&lt;&apos; and &apos;/&gt;/g&apos; with &apos;&gt;&apos; 
+propxml = xmlString.replace(/&amp;lt;/g, &apos;&lt;&apos;).replace(/&amp;gt;/g, &apos;&gt;&apos;);
+logger.debug(&quot;propxml:&quot; + propxml);
+
+// removing the &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot; ?&gt; from the xmlString
+propXmlString = propxml.replace(/\&lt;\?xml.+\?\&gt;/g, &apos;&apos;);
+// converting String to XML
+convertedXml = (new XML(propXmlString));
+// Converted XML to JSON
+json_data = E4XtoJSON(convertedXml);
+logger.debug(&quot; JSON Response: &quot; + JSON.stringify(json_data));
+
+// checking for success response
+
+if (json_data.length == 0) {
+    results.push({
+        success_message: &quot;contacts imported Successfully.&quot;,
+        campaign_id: id
+
+    });
+    channelMap.put(&quot;out&quot;, {
+        success: true,
+        results: results
+    });
+
+    channelMap.put(&apos;responseCode&apos;, &quot;200&quot;);
+} else {
+    results.push({
+        error_message: json_data.apiError,
+        campaign_id: id
+
+    });
+    channelMap.put(&quot;out&quot;, {
+        success: false,
+        results: results
+    });
+
+    channelMap.put(&apos;responseCode&apos;, &quot;400&quot;);
+}</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>HTTP Sender</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+    <connector version="3.8.1">
+      <metaDataId>3</metaDataId>
+      <name>RETURN_VALUE</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <script>const output = $(&apos;out&apos;);
+const metadata = $(&apos;meta&apos;);
+
+if (output.success == true) {
+    metadata.http_code = &apos;200&apos;;
+} else {
+    // PrepareError might have set a response code. If not, we failed to reach success for unclear reasons.
+    metadata.http_code = $(&apos;responseCode&apos;) || &apos;500&apos;;
+}
+
+const final_answer = {
+    &apos;output&apos;: output,
+    &apos;metadata&apos;: metadata
+};
+
+connectorMap.put(&apos;final_answer&apos;, final_answer);
+
+return JSON.stringify(final_answer);</script>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.8.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>PRODUCTION</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>true</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.8.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1602068713162</time>
+        <timezone>UTC</timezone>
+      </lastModified>
+      <pruningSettings>
+        <pruneMetaDataDays>15</pruneMetaDataDays>
+        <archiveEnabled>false</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+    <channelTags>
+      <channelTag>
+        <id>e7e3e2d1-3e5b-47ce-bbfa-92d20145c3b3</id>
+        <name>Import_Contacts_UCCE</name>
+        <channelIds>
+          <string>9010f916-58a3-4cbf-97cb-52db456bd899</string>
+          <string>488a510f-a644-4d83-a870-15ced0d2f1bc</string>
+        </channelIds>
+        <backgroundColor>
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </backgroundColor>
+      </channelTag>
+    </channelTags>
+  </exportData>
+</channel>

@@ -1,0 +1,491 @@
+<channel version="3.8.1">
+  <id>6dcd1882-481a-4700-b322-70a07feda017</id>
+  <nextMetaDataId>4</nextMetaDataId>
+  <name>02_dail_list_queue_scanner</name>
+  <description></description>
+  <revision>11</revision>
+  <sourceConnector version="3.8.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.js.JavaScriptReceiverProperties" version="3.8.1">
+      <pluginProperties/>
+      <pollConnectorProperties version="3.8.1">
+        <pollingType>INTERVAL</pollingType>
+        <pollOnStart>true</pollOnStart>
+        <pollingFrequency>10800000</pollingFrequency>
+        <pollingHour>0</pollingHour>
+        <pollingMinute>0</pollingMinute>
+        <cronJobs/>
+        <pollConnectorPropertiesAdvanced>
+          <weekly>true</weekly>
+          <inactiveDays>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+            <boolean>false</boolean>
+          </inactiveDays>
+          <dayOfMonth>1</dayOfMonth>
+          <allDay>true</allDay>
+          <startingHour>8</startingHour>
+          <startingMinute>0</startingMinute>
+          <endingHour>17</endingHour>
+          <endingMinute>0</endingMinute>
+        </pollConnectorPropertiesAdvanced>
+      </pollConnectorProperties>
+      <sourceConnectorProperties version="3.8.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <script>return 0;</script>
+    </properties>
+    <transformer version="3.8.1">
+      <elements>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Out Object</name>
+          <sequenceNumber>0</sequenceNumber>
+          <enabled>true</enabled>
+          <script>// Default error response.
+var out = {};
+out.success = false;
+out.results = [];
+out.error = [];
+
+channelMap.put(&quot;out&quot;, out);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Metadata Object</name>
+          <sequenceNumber>1</sequenceNumber>
+          <enabled>true</enabled>
+          <script>// Default error response.
+var meta = {};
+meta.http_code = &quot;500&quot;;
+meta.audit_log = {};
+
+channelMap.put(&quot;responseCode&quot;, meta.http_code); // Default code if all goes wrong.
+channelMap.put(&quot;meta&quot;, meta);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Build Generic Input Object</name>
+          <sequenceNumber>2</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var input = {};
+channelMap.put(&quot;input&quot;, input);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Determine Action from Input</name>
+          <sequenceNumber>3</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var out = $(&apos;out&apos;);
+var meta = $(&apos;meta&apos;);
+var input = $(&apos;input&apos;);
+
+try
+{
+	//logger.debug(&quot;[Store_dail_listorder] made it to Determine Action from Input&quot;);
+	// Copy meta from incoming request
+//	const incomingMessage = connectorMessage.getRawData();
+//	//logger.debug(&quot;[Store_dail_listorder] incoming message: &quot; + incomingMessage);
+//	if(incomingMessage==&quot;&quot; || incomingMessage==null){
+//		
+//		throw channelName + &quot; missing input data&quot;;
+//	}
+//	const messageObject = JSON.parse(incomingMessage);
+//	
+//	var myInput = messageObject;
+//	
+//	if (myInput == null)
+//	{
+//		throw channelName + &quot; missing input data&quot;;
+//	}
+//
+//	//meta[&apos;command&apos;] = &quot;INTAKE&quot;;
+//	Object.assign(input, myInput);
+
+}
+catch (e)
+{
+	logger.error(channelName + &quot; endpoint source transformer error: &quot; + e);
+
+	var myError = e;
+
+	out.error.push(myError);
+}
+finally
+{
+	
+}</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep version="3.8.1">
+          <name>Determine Destination Set</name>
+          <sequenceNumber>4</sequenceNumber>
+          <enabled>true</enabled>
+          <script>var out = $(&apos;out&apos;);
+var meta = $(&apos;meta&apos;);
+
+if (out.error.length &gt; 0)
+{
+	// if we had any errors, don&apos;t try to process.
+	const error_message_set = [&quot;RETURN_VALUE&quot;]
+	//destinationSet.removeAllExcept(error_message_set);
+}
+else
+{
+	const process_message_set = [&quot;scan_queue_send_to_voice&quot;, &quot;RETURN_VALUE&quot;];
+	//destinationSet.removeAllExcept(process_message_set);
+}
+
+out[&apos;command&apos;] = meta.command; // for easier debugging</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+      </elements>
+      <inboundTemplate encoding="base64"></inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>RAW</inboundDataType>
+      <outboundDataType>RAW</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.8.1">
+      <elements/>
+    </filter>
+    <transportName>JavaScript Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.8.1">
+      <metaDataId>1</metaDataId>
+      <name>scan_queue_send_to_voice</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <script>
+var dbConn;
+var formatter = java.time.format.DateTimeFormatter.ofPattern(&apos;yyyyMMdd&apos;);
+var Camapaign_id = &quot;d8880ea4-ea4b-4658-8c92-2113b33ba940&quot;;
+var MsgId = &quot;150&quot;;
+var dial_list_id = &quot;a3d23500-4506-4027-b01b-fde3ec3a387c&quot;
+var date = java.time.LocalDate.now();
+var day = java.time.DayOfWeek.of(date.get(java.time.temporal.ChronoField.DAY_OF_WEEK));
+var isWeekEnd = (day == java.time.DayOfWeek.SATURDAY || day == java.time.DayOfWeek.SUNDAY)
+try
+{
+	dbConn = DatabaseConnectionFactory.createDatabaseConnection(
+		configurationMap.get(&quot;DB_DRIVER_BAAS&quot;),
+		configurationMap.get(&quot;DB_NAME_BAAS&quot;),
+		configurationMap.get(&quot;DB_USER_BAAS&quot;),
+		configurationMap.get(&quot;DB_PASS_BAAS&quot;)
+	);
+	
+	var query = getOrderQuery();
+	channelMap.put( &quot;scan query in queue scanner&quot;, query );
+	var result = dbConn.executeCachedQuery(query);
+	
+	var voiceBody = {
+		&quot;Camapaign_id&quot; : Camapaign_id,
+		&quot;MsgId&quot; : MsgId,
+		&quot;OrderID&quot; : &quot;&quot;,
+		&quot;PhoneNumber&quot; : &quot;&quot;,
+		&quot;dial_list_id&quot; : dial_list_id,
+		&quot;patientMRN&quot; : &quot;&quot;,
+		&quot;patientfirstname&quot;:&quot;&quot;,
+		&quot;patientlastname&quot;:&quot;&quot;
+	  }
+	channelMap.put(&quot;total_scanned_queue_record&quot;,result.size());
+	logger.debug(&quot;Scanner_total_scanned_queue_record==&gt;&quot;+result.size());
+	var i = 1;
+	while(result.next()){
+		voiceBody.OrderID = result.getString(&quot;appointment_id&quot;);
+		voiceBody.PhoneNumber = result.getString(&quot;patient_phone_num&quot;);
+		voiceBody.patientMRN = result.getString(&quot;patient_mrn&quot;);
+		var dail_list_queue_id = result.getString(&quot;dail_list_queue_id&quot;);
+		var attempt_date = result.getString(&quot;attempt_date&quot;);
+		var patient_name= result.getString(&quot;patient_name&quot;);
+		voiceBody.patientfirstname=patient_name.split(&apos;,&apos;)[0];
+		if(patient_name.split(&apos;,&apos;)[1]){
+			voiceBody.patientlastname=patient_name.split(&apos;,&apos;)[1];
+		}
+		
+		if(!isWeekEnd){
+			var dispMsg = JSON.stringify([voiceBody]);
+			var res =null
+			try{
+				res = router.routeMessage( &quot;Import_Contacts_UCCX_TCH&quot;, dispMsg );
+				logger.info(&quot;response------------------&gt;&quot;+res)
+			}catch(e){
+				res = e;
+			}
+			if(res.toString().indexOf(&apos;ERROR: Error routing message to channel&apos;)&gt;=0){
+				updateDailListOrder(dbConn, dail_list_queue_id,true,res);
+			}else{
+				updateDailListOrder(dbConn, dail_list_queue_id,false,res);
+			}
+			
+		}
+		channelMap.put(&quot;processed_scanned_queue_record&quot;,i);
+		logger.debug(&quot;Scanner_processed_scanned_queue_record==&gt;&quot;+i);
+		i=i+1;
+	}
+		
+		
+	
+}catch(e){
+	throw e;
+} finally {
+	
+	if(dbConn){
+		dbConn.close();	
+	}
+}
+function getOrderQuery(){
+	return &quot;select dlo.*, dlq.id as dail_list_queue_id, dlq.attempt_date as attempt_date from outbound.sso_spinsci_diallist_order dlo &quot;
+			+&quot;inner join outbound.dail_list_queue dlq on dlq.ref_id = dlo.appointment_id &quot; 
+			+&quot;where dlq.attempt_status not in(&apos;SUCCESS&apos;,&apos;OPT_OUT&apos;,&apos;IN_PROGRESS&apos;) and dlq.attempt_number &lt; 3 &quot;
+			+&quot;and dlo.is_scheduled = &apos;FALSE&apos; and (dlq.attempt_date is null or DATE_PART(&apos;day&apos;,now()-TO_DATE(dlq.attempt_date,&apos;YYYYMMDD&apos;))&gt;=3)&quot;;
+}
+function updateDailListOrder(dbConn, dail_list_queue_id,isError,channelStatus){
+	var query = null;
+	if(!isError){
+		query = &quot;update outbound.dail_list_queue &quot; 
+				+&quot;set channel_status = &apos;&quot;+channelStatus+&quot;&apos;, attempt_date = to_char(now(), &apos;YYYYMMDD&apos;) &quot;+&quot;, attempt_number = attempt_number+1, attempt_status = &apos;IN_PROGRESS&apos; &quot;
+				+&quot;where id = &apos;&quot;+dail_list_queue_id+&quot;&apos;&quot;;
+		
+	}else{
+		query = &quot;update outbound.dail_list_queue &quot; 
+				+&quot;set channel_status = &apos;&quot;+channelStatus+&quot;&apos; &quot;
+				+&quot;where id = &apos;&quot;+dail_list_queue_id+&quot;&apos;&quot;;
+	}
+	if(query) dbConn.executeUpdate(query);	
+		
+}
+
+
+</script>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+    <connector version="3.8.1">
+      <metaDataId>2</metaDataId>
+      <name>RETURN_VALUE</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.8.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.8.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <script>const output = $(&apos;out&apos;);
+const metadata = $(&apos;meta&apos;);
+
+// PrepareError might have set a response code. If not, we&apos;re happy to say OK.
+metadata.http_code = $(&apos;responseCode&apos;) || &apos;200&apos;;
+
+const final_answer = {
+	&apos;output&apos;: output,
+	&apos;metadata&apos;: metadata
+};
+
+connectorMap.put(&apos;final_answer&apos;, final_answer);
+
+return JSON.stringify(final_answer);</script>
+      </properties>
+      <transformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.8.1">
+        <elements/>
+        <inboundDataType>RAW</inboundDataType>
+        <outboundDataType>RAW</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.8.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.8.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.8.1">
+        <elements/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>false</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.8.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>true</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.8.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>true</enabled>
+      <lastModified>
+        <time>1602148411957</time>
+        <timezone>UTC</timezone>
+      </lastModified>
+      <pruningSettings>
+        <pruneMetaDataDays>45</pruneMetaDataDays>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+  </exportData>
+</channel>

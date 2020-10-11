@@ -1,0 +1,431 @@
+<codeTemplateLibrary version="3.8.1">
+  <id>e128f2c4-30eb-43b2-9c91-e486ea134ac8</id>
+  <name>TCH lib</name>
+  <revision>4</revision>
+  <lastModified>
+    <time>1602003703502</time>
+    <timezone>America/Chicago</timezone>
+  </lastModified>
+  <description></description>
+  <includeNewChannels>false</includeNewChannels>
+  <enabledChannelIds>
+    <string>e93f4ac2-647f-4ed4-b70a-7eb26f2837aa</string>
+    <string>fb125b41-a1d0-42a6-8fe6-6556b93f3a2c</string>
+  </enabledChannelIds>
+  <disabledChannelIds>
+    <string>b0f93bb5-fc91-4eec-b5e4-ca849ee47d39</string>
+    <string>fd42ea46-eb3e-44bd-8aff-3ccddf1719ff</string>
+    <string>2845f6f6-7aa5-42eb-87a2-7c932f139eaf</string>
+    <string>c73fb47f-0bf4-480b-ab2d-91e552d22714</string>
+    <string>6c813a1b-3b0b-40ae-ba2f-73c022c73bcc</string>
+    <string>bf0b49b5-e221-40c4-9b49-fcb585a3aeef</string>
+    <string>98ddbc5d-7438-44ab-975b-0e0e01462b95</string>
+    <string>5bd7e533-13bf-4f8b-96c4-e4a3f531969b</string>
+    <string>35cca48e-cb79-485c-a2b1-ec6cb54996a3</string>
+    <string>52679564-5fd1-42db-b67f-cfc6757cb127</string>
+    <string>a56fadde-0c55-4fc5-915e-b91a997f6acd</string>
+    <string>1ed020f7-bdae-4af9-933d-ca3e57bbd270</string>
+    <string>5d65bc6c-262c-41a6-bfa6-1e3d5b8b5c65</string>
+    <string>bf3eb651-f81a-432c-b552-10e7d09cc37a</string>
+    <string>3c90b556-4d8a-40d9-baea-012eea404214</string>
+    <string>c19ca7a0-7d17-4939-b24f-15cf68180a95</string>
+    <string>17fcc0b4-5d15-4e1f-95d3-beee2bbb9f70</string>
+    <string>17bfff8e-8d80-4d89-9c6b-b3cadccc7068</string>
+    <string>d12ac413-8036-4642-9cdc-ac0bab5a5968</string>
+    <string>651a784f-6a8c-40a1-8331-d0bba7c23231</string>
+    <string>e13a57cd-1c09-4c65-b585-0043b8e9e64e</string>
+    <string>625ae7bf-b77e-4a7e-afd1-22f2dbca5e4e</string>
+    <string>2524796a-417a-4a58-94c1-85897d656e3b</string>
+    <string>a24809bc-f87e-46f2-bade-02a97fff384a</string>
+    <string>b3558ad5-a183-450d-92d4-05d0d09eebf4</string>
+    <string>2774e30d-e181-412c-a8c7-e640d3ff089e</string>
+    <string>4d43b44e-12eb-4368-9df2-9179b477ad45</string>
+    <string>9b62d076-7796-4218-976f-9e116cebfb42</string>
+    <string>0b062085-5477-4ca7-ae80-0c71c32687da</string>
+    <string>e6da6896-90e2-4c7b-9a05-f83afc761cf3</string>
+    <string>6344d16e-e2cb-47b5-8fde-8442a6ae1838</string>
+    <string>dae63a5e-e1a8-4fbc-a358-45d5806ab4da</string>
+    <string>471d0077-f1fc-419e-a493-d7aa4c392843</string>
+    <string>5305225a-14d4-4609-8a87-ac6e178c0e4a</string>
+    <string>ffface50-22a6-407c-9697-3bcb70a7b3bc</string>
+    <string>d9b37771-f406-44f9-ba23-e052544ad444</string>
+    <string>e94d93bd-745b-434f-941b-59938e7aa32d</string>
+    <string>986a41c8-8f90-4793-b1b5-4d5990a1d188</string>
+    <string>2a578c08-76ff-4ec9-aca5-8d2b77215b9b</string>
+    <string>7ffebed3-0ac8-4c5e-86cb-cb6be64f76d3</string>
+    <string>0e68dd99-059c-4c31-b411-0aaafe3a2aef</string>
+    <string>83f89b03-0dbe-425b-b8e6-882f095f78a9</string>
+    <string>243cf548-9b0a-44f9-87e2-4b0f7a14eab3</string>
+    <string>8f441540-cb26-4f16-bd74-87d4eb7af40d</string>
+    <string>944b2d62-2cf5-49e9-a24f-31af60c3bb66</string>
+    <string>9f8a049a-bd80-424a-ac14-48d9e933422a</string>
+    <string>ca85cc82-f696-408c-b101-1a5a68443403</string>
+    <string>fb5ef59b-9693-48c7-b788-17cc7c752026</string>
+    <string>7a1c2438-dc8e-438f-9c45-37e944dbe2a4</string>
+    <string>d48873f6-c3ea-46a8-91da-70040b9f84d5</string>
+    <string>612ee3f9-6447-4119-958d-2c7664e990fe</string>
+    <string>8aae209b-5fe4-4aa7-82b9-eab172f45ce5</string>
+    <string>cd4a025f-b625-4a29-8a67-c2a4efd70f03</string>
+    <string>88577e74-ec21-4007-bfd6-fbada2ae4c17</string>
+    <string>39c1e1a8-26e2-4d63-a4e7-32927da6eed6</string>
+    <string>869dc962-f28a-483e-8893-3e7220f93a7a</string>
+    <string>7e44ca31-7937-42f1-9e09-8035494b8b34</string>
+    <string>85174112-d511-468e-b483-046ade28c843</string>
+    <string>495255b2-ea7a-4dab-bf0a-d11c63a56224</string>
+    <string>b06473b4-fad5-4d8f-a02f-caa203d9e001</string>
+    <string>96e5c282-19f5-4c3b-a228-fce92262574d</string>
+    <string>4a824f95-27a5-42ae-9681-96af318709a6</string>
+    <string>e03caa98-3bab-4ec2-9ebf-baaba05ee6bc</string>
+    <string>d80c52e7-6649-4de6-8ef6-cd9212e42d92</string>
+    <string>11025322-def0-4c1f-a1db-14da8650c264</string>
+    <string>8771b49d-1787-428c-a77d-82da52546f02</string>
+    <string>6875855f-8529-4f30-9171-e16e67d0dcc3</string>
+    <string>b078b4ad-6833-489a-800f-16eb16bb5f36</string>
+    <string>7547c433-bdc6-4fc3-bea8-fa8687d6744c</string>
+    <string>a235de59-c64c-4ac6-a8f4-2e170df94d8f</string>
+    <string>f6d539df-1b84-46b7-ad0d-ff08fa15b5ed</string>
+    <string>1359cec7-5aa9-403d-894c-b2f22caf6b1d</string>
+    <string>32d54449-5b54-4562-85ef-7094b8802c04</string>
+    <string>40688ddb-b5e3-4deb-b8e9-77b45f9444b9</string>
+    <string>26ee2efd-0c52-4573-a288-224f56f388ad</string>
+    <string>62759dd1-42c9-407e-86ab-5a301b733306</string>
+    <string>a1d5b3b5-b26f-4f85-87f3-542b524931ee</string>
+    <string>3b2ea6b7-fc6c-4ed7-9c92-ac1c6b7409e6</string>
+    <string>3c4c1f2c-ff64-4c92-915e-57b1dfb88820</string>
+    <string>7dee12a9-5aee-4410-a40f-a87c4d68e90a</string>
+    <string>8c036dfe-4d00-4257-9af8-bd37bf128a78</string>
+    <string>cf977722-d7bc-4ff6-a11b-43241c84bede</string>
+    <string>c945b33b-35f2-432b-b140-5b96e4136607</string>
+    <string>9ee8c3fc-aa0c-414e-a102-0383e2e40d81</string>
+    <string>85f4196e-8095-418a-8ecc-396693337aa2</string>
+    <string>36542ffd-a91e-48c1-9b9c-22e0aa29136d</string>
+    <string>0bd9ea84-4d90-4f9c-b1ff-e0497cbaae3f</string>
+    <string>4b06d71e-2d56-4b2a-aacf-a31564d6e1c2</string>
+    <string>b5badeb9-37fb-4067-a7af-0330a8dcfa8a</string>
+    <string>bcc32dde-9b2e-4f5d-b82a-8dac33398ce8</string>
+    <string>e2486421-a362-4d04-86ab-666c95de22f8</string>
+    <string>d02a46db-6d4e-4227-9883-deaa08cf0404</string>
+    <string>e6d40659-5564-4c2e-82f4-a15a70e2bcf7</string>
+    <string>c93e95a7-08b0-4095-b148-cdab37bbe644</string>
+    <string>dd97cc12-9fc9-4f12-bbac-dbf9be909eb8</string>
+    <string>fa6259f8-9c11-45be-a450-af0562ec7f2c</string>
+    <string>028038f5-735b-4925-8132-696a826bbf4a</string>
+    <string>66895766-dd5a-410f-908c-eb48705de5f7</string>
+    <string>4e488381-37e9-4ab4-b4a9-5e41d2f5c628</string>
+    <string>c40bba0c-9f33-4bb7-accd-9303e606eac9</string>
+    <string>47ef86fd-056f-4d82-83a1-3eb1c1523bfc</string>
+    <string>dc45951e-292e-4ff8-b21f-ac94037bd1ad</string>
+    <string>28f4c8e9-120a-45ec-b549-f87c488b2b89</string>
+    <string>fc36463b-051f-4ef2-b226-049a61d96161</string>
+    <string>e9adcf31-177b-4768-9e15-d2f347ad6bef</string>
+    <string>a242c6d7-57a7-4e52-aae6-d04876b4b257</string>
+    <string>488a510f-a644-4d83-a870-15ced0d2f1bc</string>
+    <string>cc29d8d7-d140-4f1f-bcd5-6fd7d42f2765</string>
+    <string>9035989d-f9d8-4d16-b654-c03661c99fa3</string>
+    <string>20772ece-a1c0-4360-8070-09694a014fdd</string>
+    <string>37bcb2ed-e761-4579-aaff-feb54672c33d</string>
+    <string>f2a85e71-6ce3-4cec-98d1-22bf468a7b67</string>
+    <string>8efbce9c-a388-4f4f-bf2f-c1d22ac0e7f7</string>
+    <string>a85ad3ef-3889-49ce-b5ff-a808955b1e36</string>
+    <string>6c831f29-7b37-4e93-9298-03ee35f35a6c</string>
+    <string>432f80d3-4604-4cc9-8f0b-b3a2c4850fca</string>
+    <string>7a46dfe3-6136-4a7e-96b8-d0ce28bc9fba</string>
+    <string>0a2e0afd-0238-4a3c-a46b-0cfa553e00b7</string>
+    <string>8895b1f1-979e-4876-836a-7480d68baefd</string>
+    <string>8cabd547-548d-406e-8b3a-cf4804abbc0e</string>
+    <string>857fb300-f6ce-42b3-892f-3e015b3eb025</string>
+    <string>a5163987-d9b2-49cb-bd07-32dcc2e5103a</string>
+    <string>e81901ad-c76d-4921-a8df-3274c0cb0f46</string>
+    <string>b7dbcba8-77cb-406a-b6ca-f5cb57972aa1</string>
+    <string>8bd229a5-ecaf-4055-bb7b-d46b624b6ae8</string>
+    <string>19b306de-6c4e-4efa-ae93-41a22e9b3500</string>
+    <string>3583f49e-b09d-43ed-9bfb-ce91f9e12c55</string>
+    <string>44ff93ef-8cd7-4f72-9d94-224c7d094036</string>
+    <string>c3cc6510-8f53-4753-b0d8-482512316568</string>
+    <string>6fca82c1-23cb-493d-829d-6215a56eceeb</string>
+    <string>837c330b-0fb7-465f-a78a-88fce8b374ef</string>
+    <string>af3b5e04-70d1-4db7-96e0-83d2b40bdeb4</string>
+    <string>6b8ce33e-07eb-413f-9127-bf697a891623</string>
+    <string>1d6a0ff9-7a18-4729-a57a-dfab16d8b99c</string>
+    <string>ed226c90-cef2-42f4-b5f5-5c7db2210c3e</string>
+    <string>58335340-131a-4642-906d-a85089874d61</string>
+    <string>66611fe6-170c-4cc8-8a3a-c1c55c1e4b1b</string>
+    <string>2ad5a1bc-ade2-498e-9c10-7569e8608338</string>
+    <string>78c6942d-48cd-47a1-8383-be3471f4bf2d</string>
+    <string>ecbee207-0bc0-46b9-9439-84be65b54dda</string>
+    <string>d5e5b40d-f3dc-4b04-a0bc-63fded3505b2</string>
+    <string>21fb9440-743f-4b59-b0ef-83e44efded5b</string>
+    <string>9010f916-58a3-4cbf-97cb-52db456bd899</string>
+    <string>3a22a1cc-bd04-4259-b279-e0fc31b237fc</string>
+    <string>2463bc9e-3186-44b0-a107-f4ab7e2af82e</string>
+    <string>2cd61bd2-4024-465a-a9c2-31693a7bb4b6</string>
+    <string>d2b039a0-d217-4889-b33c-be3fcbddafe9</string>
+    <string>3324efc8-61d6-42e6-a8f5-891028f40a00</string>
+    <string>7d0fce6b-bbe6-4e03-99ca-51b63ebd0c50</string>
+    <string>33e3d29b-5b43-4f5d-918f-4cb55a60ed7e</string>
+    <string>ed40bd32-641e-42f9-9aa5-fb85e7060996</string>
+    <string>ac88dd51-e747-4fba-b0a1-d23d8c7ade31</string>
+    <string>89d13bec-b187-458e-8571-2c7a081df143</string>
+    <string>e19c6028-c37d-4936-9f48-f5d99c4861ea</string>
+    <string>2b138efe-f442-4a07-8b5e-8d7a64fc89da</string>
+    <string>0d657d43-37f6-41ce-be86-06f5f54dea1a</string>
+    <string>30a7b18c-3ae8-409d-b492-7af53149474a</string>
+    <string>80aa84f3-0537-4650-9f4b-307359fde885</string>
+    <string>20198149-3d2c-4d61-89ba-68d505f8ff6f</string>
+    <string>8bcf451a-3d8d-4873-9a6d-b4930c5a3244</string>
+    <string>bddfcc40-ef91-4679-88d3-05be60b08095</string>
+    <string>c709b99f-407e-4152-826c-f777bb6d5831</string>
+    <string>36fa0497-29b3-4fa8-b30d-fcfb4c4d5616</string>
+    <string>3c6eaa05-3bbf-489b-b9fe-5d2a1a20d347</string>
+    <string>69d72a59-31a8-412c-b103-c22e5921eb40</string>
+    <string>7621e22e-8578-4d03-97b9-38d2ecb14c5f</string>
+    <string>54d2198e-b8e5-44c5-aec5-a4bb7f2c0a3b</string>
+    <string>0f77c05b-d42d-4430-b54a-d40109a25f8a</string>
+    <string>82ef49a1-4093-492a-bec5-b959107deeed</string>
+    <string>bffbdae8-2e1d-40f2-b1e7-231cf52d477b</string>
+    <string>1c64b641-b54b-42e3-b1c1-b6f2e5433778</string>
+    <string>92800dd7-cc61-43ba-abc4-659eee1ddaea</string>
+    <string>4f0991fd-7c0b-47ba-8f37-1e38a4d2719f</string>
+    <string>2d499eb2-332f-4903-b2ae-c79465d1863d</string>
+    <string>41e9f9e1-1803-4e4d-b135-0dba3be54589</string>
+    <string>c1d1da27-8581-4bb6-aeba-c3e1df9c8777</string>
+    <string>c7fef5b2-5550-442e-bd7f-efd694796176</string>
+    <string>81a1300a-1693-4cfd-9af4-81236e56fdad</string>
+    <string>6c06d92c-fbec-4a0f-af32-c30ce0d74ad6</string>
+    <string>d9f79f03-06fa-4235-8f45-58f9484b87a1</string>
+    <string>fc395894-9c09-4d33-bfdf-5a2803b5b38f</string>
+    <string>d30e8799-6e31-4d70-91da-d03d833e6849</string>
+    <string>46822700-b3d1-4428-b80c-1e0bc75cbdd3</string>
+    <string>485a6931-1f36-42ef-b58f-4c6398f4c701</string>
+    <string>86637ec3-6e63-4ac6-8de1-3e61938da34e</string>
+    <string>33bfd684-1a0a-462c-bf58-fd57cef1e7c8</string>
+    <string>c1821937-f7d0-431f-818c-9caa597c4521</string>
+    <string>0e6686b6-4433-42b4-96d8-58813ed4151a</string>
+    <string>81fd7e88-afc0-4f00-803b-f781bc40ca8e</string>
+    <string>f6b57803-1078-40ba-8c27-fc6b86edc38c</string>
+    <string>a530e03e-52ca-40db-813a-491a8cce7543</string>
+    <string>248cebea-77d2-45f8-88f1-d42c581cfbac</string>
+    <string>3b209ae6-af13-4495-adff-a3f53f14957d</string>
+    <string>5a447a6b-22ba-4e04-b582-1dd0aefd9338</string>
+    <string>40b1cb74-521f-48d4-a150-4ba3cdd192a2</string>
+    <string>a88e8836-94c2-4380-ad5b-a2982eece0f8</string>
+    <string>e946c7c9-cc5e-4c57-8569-e72aa538191d</string>
+    <string>cf030cd2-5155-4d61-bc33-43e1c8fc5370</string>
+    <string>4e7c9035-efa9-4709-8185-716421c4fb5f</string>
+    <string>7d4bcab1-56e4-4c46-9b98-ad3cc8f34f3f</string>
+    <string>9e116d70-08e7-4e17-982c-742da302a685</string>
+    <string>936f0281-d0b4-4a84-a87e-cb34df56385a</string>
+    <string>61bb3da2-0d14-41fb-a974-210d7e94aee3</string>
+    <string>5bb88c37-5535-492e-bca6-d845755a78b4</string>
+    <string>b7a053d9-6f8b-44ca-a6e4-2dff67fdb5be</string>
+    <string>04e4ca4b-12ba-46cd-bafe-2768f0f21737</string>
+    <string>dba67725-d53c-476e-96d8-f67364655409</string>
+    <string>ab45d624-d58c-448a-bfdf-437b3fa7c33a</string>
+    <string>c696cedc-7c8a-4479-a465-742c872f00de</string>
+    <string>86b9770b-a744-4583-b6ba-700479decf9f</string>
+    <string>3f38bd46-3ab6-4e46-abaa-7d3b378c96cd</string>
+    <string>c4904ac7-3528-40bb-9fbc-14d8ae3cb0cc</string>
+    <string>691549f9-dae3-4265-97e0-ad032a834c52</string>
+    <string>707a78a2-7947-4025-85f1-465d655da0d3</string>
+    <string>d876ee86-eae6-4a6a-8385-8773ebd6e9d8</string>
+    <string>a7fc527a-b100-4ba4-a094-28468d0c3224</string>
+    <string>1584e2bf-fc83-470f-a045-99fbbd606480</string>
+    <string>6dcd1882-481a-4700-b322-70a07feda017</string>
+    <string>26b3a3eb-4583-4cde-8e7a-ccdc50d74db0</string>
+    <string>ef8d31b6-5286-467e-94d3-6b8dc0498c3f</string>
+    <string>349af3a5-d5a3-44f5-ace3-1c708149ee7b</string>
+    <string>bb1877c6-1f8e-482d-83b1-911fc9bc0328</string>
+    <string>4c129a2a-aaac-4a8a-b8fe-a826e781d017</string>
+    <string>9e9b0bd3-01fe-4912-8432-c58712d646d7</string>
+    <string>84cc0abe-53e0-42f2-a341-348de99be564</string>
+    <string>80aadbbd-f18b-44c6-b0a8-4bf024945530</string>
+    <string>9a8c849e-8310-4f5a-8e1b-c573c46d311d</string>
+    <string>97b60ea5-41a2-4518-9ade-97d60567ea22</string>
+    <string>63ce2440-af09-486f-aa30-2c03ffa4f62e</string>
+    <string>85385438-91ca-4f18-9705-d7be8a80ac43</string>
+    <string>57ba878b-943a-476f-8be5-a0828b1ac683</string>
+    <string>eb5d5a44-d24d-4d0c-805c-3eb4489292d4</string>
+    <string>56306ffb-de0c-4319-ae00-eb34b2fd33fe</string>
+    <string>ce73e53c-c0f0-4f86-a3dd-958d23d84785</string>
+    <string>464f713e-9557-42da-9037-dc715c9d6aad</string>
+    <string>346f6127-50bd-44bb-a1f0-09f2a623962e</string>
+    <string>a7f845de-e5a3-4f25-ba2a-da6d22161e61</string>
+    <string>ce67628d-6639-4acb-b772-b61d194cf69c</string>
+    <string>4effcba8-3998-4188-a40d-0f41a1d8378c</string>
+    <string>6b86480f-8c14-4bff-8db0-7145d78d24d7</string>
+    <string>0e9eb850-4204-4ee2-aad6-849ff19c7fdf</string>
+    <string>24de69d2-c0c8-4434-8c33-13b9c7953002</string>
+    <string>2180024f-27a7-4a86-a31a-0180c38d35f9</string>
+    <string>ab23e862-3544-4731-bcf8-e871fbbe9608</string>
+    <string>b036c67a-d461-471b-817e-379d50cce59b</string>
+    <string>3f0d49e7-3396-4dc1-b55a-2ec72a7a9d00</string>
+    <string>abe100d9-36f8-4595-bc93-dbd4be6e084e</string>
+    <string>7541be74-5f8f-40d5-9226-4c47d7378998</string>
+    <string>e8f78342-6bc4-4d88-85bc-73b30543e9e8</string>
+    <string>cd9d45aa-8c10-4166-8499-64be5f42adc5</string>
+    <string>3363dcaa-6cbd-4d20-be36-533885497756</string>
+    <string>1cf4b201-df5c-4771-a2c3-a6f4cc7095e4</string>
+    <string>07e5a991-6de4-4c19-ad3d-f0f0bfb43647</string>
+    <string>67194ac3-5c6f-4654-973c-a31f3d1ccecc</string>
+    <string>bcfe54e4-23c8-4bf6-b824-dec59fdf72da</string>
+    <string>600c3168-5180-4b1a-8e7e-0e219ef065fd</string>
+    <string>881cecd6-0c37-4607-8f3e-2cb7ae69ec45</string>
+    <string>02a41175-d4b7-4719-9b77-28164b0b714e</string>
+    <string>c8d15c97-12e3-4a62-bde3-db5c5a8a6f80</string>
+    <string>13f96187-5d02-4e0e-9928-88d12eb28970</string>
+    <string>f2e9d9b3-05c8-404b-ba08-fcaf48f4d8f6</string>
+    <string>369b331d-75ca-4f48-8a08-623b3336e04c</string>
+    <string>cd506de1-c120-4d17-9ad2-55e378ed73bd</string>
+    <string>982b2314-d2d6-46c2-b4ea-0b56490affda</string>
+    <string>0748004b-7480-473b-b646-604dfcd94d83</string>
+    <string>2de77efc-9d7a-4bcf-a592-8121272803e2</string>
+    <string>a5987106-c0e7-4591-a8dc-b98a8dbfb627</string>
+    <string>6f8768dc-c7d4-4529-87e4-29329d447a2a</string>
+    <string>6092d045-e895-4482-96d1-e6b07fb77b41</string>
+    <string>d27165db-aef5-4115-bfe9-7b8ae2842664</string>
+    <string>a319a5c6-5c79-4b92-9b22-93579f3310ef</string>
+    <string>9846604c-d70e-4c51-8b35-c783697782d2</string>
+    <string>88cce3b6-a700-4958-beac-fe41db8c52fb</string>
+    <string>0f33fb81-1342-42e0-b294-220e9ca5d521</string>
+    <string>b8b51138-3aeb-42e0-82d1-6e579a6a946e</string>
+    <string>943f0be2-5403-4d13-81c0-53f483a7afe0</string>
+    <string>c2369e59-12dc-4f85-ba83-9f0f0c6ba961</string>
+    <string>f9589809-4f50-4695-b62b-8179bb827a10</string>
+    <string>7cf42390-2562-483d-979b-4506e81dbb9f</string>
+    <string>10532630-7a8f-42e5-9862-6124f71b1c2c</string>
+    <string>af09b68a-e60f-48f5-980f-7c0ea251784c</string>
+    <string>61e2f0c6-ba44-4fa8-a2c5-f2fd32f812bd</string>
+    <string>cc215407-1aa1-4f7f-b17a-60cded34455a</string>
+    <string>31341dcd-a084-4631-9c1b-2f13337e25e0</string>
+    <string>674f5cc4-2b7c-4e66-b898-a5fbfa3b32ce</string>
+    <string>e63985fd-05f7-4238-9fb7-bf72737bfda8</string>
+  </disabledChannelIds>
+  <codeTemplates>
+    <codeTemplate version="3.8.1">
+      <id>90dbeff1-ae11-461d-afc5-4edb0df3416e</id>
+      <name>dail-list-queue Add</name>
+      <revision>1</revision>
+      <lastModified>
+        <time>1601705754782</time>
+        <timezone>America/Chicago</timezone>
+      </lastModified>
+      <contextSet>
+        <delegate>
+          <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+          <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+          <contextType>DESTINATION_DISPATCHER</contextType>
+          <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+          <contextType>SOURCE_RECEIVER</contextType>
+        </delegate>
+      </contextSet>
+      <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+        <type>FUNCTION</type>
+        <code>/**
+	Modify the description here. Modify the function name and parameters as needed. One function per
+	template is recommended; create a new code template for each new function.
+
+	@param {Any} dbConn - 
+	@param {Any} rec - 
+	@return {Any} 
+*/
+function addDailListQueue(dbConn,rec) {
+
+		var pos = [];
+		var cols = [];
+		var values = [];
+		
+		// Prepare Dynamic Query inserts
+		for (prop in rec) 
+		{
+			pos.push(&apos;?&apos;);
+	          cols.push(prop);
+			values.push(rec[prop]);
+		}
+	
+		var stmt = 
+		&apos;insert into outbound.dail_list_queue (&apos; +
+			cols.join(&apos;,&apos;) + 
+		&apos;) values (&apos; + 
+			pos.join(&apos;,&apos;) + 
+		&apos;) &apos; +
+		&apos;returning &apos; +
+		&apos;id,&apos;+
+		&apos;attempt_status&apos;;
+	
+		var queryAndValuesObject = {
+			query: stmt,
+			values: values	
+		};
+		channelMap.put( &quot;diallist_queue_Add_QueryAndValuesObject&quot;, queryAndValuesObject );
+		
+		var keys = dbConn.executeUpdateAndGetGeneratedKeys(
+			stmt,
+			values
+		);
+		if(keys.next()){
+			rec[&quot;dail_list_queue_id&quot;]=keys.getString(&quot;id&quot;);
+			rec[&quot;attempt_status&quot;]=keys.getString(&quot;attempt_status&quot;);
+		}
+		return rec;
+
+}</code>
+      </properties>
+    </codeTemplate>
+    <codeTemplate version="3.8.1">
+      <id>7045a7ee-c695-4fee-ad40-e3327cb13b97</id>
+      <name>dail-list-queue-history Add</name>
+      <revision>1</revision>
+      <lastModified>
+        <time>1601705754820</time>
+        <timezone>America/Chicago</timezone>
+      </lastModified>
+      <contextSet>
+        <delegate>
+          <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+          <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+          <contextType>DESTINATION_DISPATCHER</contextType>
+          <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+          <contextType>SOURCE_RECEIVER</contextType>
+        </delegate>
+      </contextSet>
+      <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+        <type>FUNCTION</type>
+        <code>function addDailListQueueHistory(dbConn,rec) {
+
+		var pos = [];
+		var cols = [];
+		var values = [];
+		
+		// Prepare Dynamic Query inserts
+		for (prop in rec) 
+		{
+			pos.push(&apos;?&apos;);
+	          cols.push(prop);
+			values.push(rec[prop]);
+		}
+	
+		var stmt = 
+		&apos;insert into outbound.dail_list_queue_history (&apos; +
+			cols.join(&apos;,&apos;) + 
+		&apos;) values (&apos; + 
+			pos.join(&apos;,&apos;) + 
+		&apos;) &apos; +
+		&apos;returning &apos; +
+		&apos;id&apos;;
+	
+		var queryAndValuesObject = {
+			query: stmt,
+			values: values	
+		};
+		channelMap.put( &quot;diallist_queue_history_Add_QueryAndValuesObject&quot;, queryAndValuesObject );
+		
+		var keys = dbConn.executeUpdateAndGetGeneratedKeys(
+			stmt,
+			values
+		);
+
+}</code>
+      </properties>
+    </codeTemplate>
+  </codeTemplates>
+</codeTemplateLibrary>

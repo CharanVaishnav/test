@@ -1,0 +1,2423 @@
+f77f1623-9d41-4374-8ff7-347fc09b6d35,TCHVOICE,VOICE,2020-10-06 04:40:02.282885,2020-10-06 04:45:04.204813,,"[
+  {
+    '"type'":'"VOICE'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"This is an important message from The Christ Hospital to schedule a follow up appointment for your recent visit. Press 0 to get started with an advocate'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+1a2dc5bf-81ac-401c-a982-725dcc953e40,TCHVOICEMAIL,VOICEMAIL,2020-10-06 04:40:02.282885,2020-10-06 04:51:55.906216,,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"This is an important message from The Christ Hospital to schedule a follow up appointment for your recent visit. Please call us at '",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"3.wav'",
+        '"tts'":'"to schedule.'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+04f9c009-2261-4e1a-a866-ba670eeb855c,VOICE,TELEPHONE,2020-07-24 07:35:03.528936,2020-08-24 10:02:18.753636,1745,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"1745'",
+'"VisitName'":'"Telephone'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"31.wav'",
+        '"tts'":'"telephone'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"10.wav'",
+        '"tts'":'"Please be available at this time for a phone call from your provider. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+11b53d48-4c6e-4e4c-bcdb-470c1d7612d8,VOICEMAIL,NSM,2020-07-29 02:05:23.793741,2020-08-24 10:07:08.023758,250,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"250'",
+    '"VisitName'":'"NOSHOW'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"22.wav'",
+        '"tts'":'"You missed your appointment scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"23.wav'",
+        '"tts'":'"Your health is important to us and we’d like to get you rescheduled as soon as possible'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"static'",
+        '"fileName'":'"24.wav'",
+        '"tts'":'"Please call'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"25.wav'",
+        '"tts'":'"to reschedule your appointment'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+387245ec-defd-4dce-b734-f326b3ccf7b5,VOICEMAIL,TELEPHONE,2020-07-29 02:05:23.793741,2020-08-24 10:08:40.45861,1745,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"1745'",
+    '"VisitName'":'"TelePhone'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"31.wav'",
+        '"tts'":'"telephone'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"10.wav'",
+        '"tts'":'"Please be available at this time for a phone call from your provider. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+1dc7a73a-a092-443a-940a-174f14971d3f,VOICEMAIL,VIRTUAL,2020-07-29 02:05:23.793741,2020-08-24 10:11:17.557911,1746,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"1746'",
+    '"VisitName'":'"Virtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"11.wav'",
+        '"tts'":'"Please check your e-mail for the link and instructions on accessing your video visit'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+72ce21ec-5c5e-4db6-94fc-f56dba9b6388,variable,@date,2020-05-20 06:57:29.903896,2020-08-03 06:32:58.842226,0,
+ca8473ed-2279-45f7-a62b-f411145a28b9,variable,@time,2020-05-20 06:57:29.903896,2020-08-03 06:32:58.842226,0,
+3f66ad39-e0f9-4a6d-98da-50d92912ffaa,variable,@dateAndMonth ,2020-05-20 06:57:29.903896,2020-08-03 06:36:26.827929,0,
+21dc6e89-4904-46a1-b7f7-7272f878bdce,variable,@AppointmentID,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+fe3c7844-3278-430b-879d-cef7e1fe86fc,CODE,VOICE,2020-08-24 11:13:05.307624,2020-09-03 05:23:07.562198,210,
+c258473b-5ee9-405d-a0cc-7b116ea8679d,CODE,VOICE,2020-08-24 11:13:05.307624,,120,
+77fa3a3c-141e-45da-8a64-f197a1319d23,CODE,VOICE,2020-08-24 11:13:05.307624,,130,
+10859597-e859-4d3e-aa00-279ee9923fe1,CODE,VOICE,2020-08-24 11:13:05.307624,,140,
+ea975390-031f-4aba-8b75-75040946c83d,CODE,VOICE,2020-08-24 11:13:05.307624,,250,
+ab4d6ce7-7cb4-4b94-b92b-205a760600e3,variable,@PatientFirstName,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+0d41b12e-edb2-47e9-8305-9622aadacc1f,variable,@Facility,2020-05-15 09:36:42.106187,2020-08-03 06:35:12.284799,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+55de7081-d48f-495a-bd44-f35a98bba74c,SUBITEM,STOP| All the future communication is stopped on your request,2020-06-28 05:32:36.81151,,,
+ce01dab8-0216-4ef1-a210-92983ff13972,variable,@PatientEmail,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+f8964afd-1aa6-4d4e-a084-32da65ce8369,variable,@PatientMobilePhone,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+00c7cf76-67f9-4b09-9d23-48c18ee28305,variable,@AppointmentDateAndTime,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+978737c3-53be-478e-8db3-654c92d98f70,variable,@PatientID,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+4461236e-57b5-45c1-b9b8-d1957e77af85,variable,@VisitType,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+41ccdf2f-ffbe-4e57-a294-475e1730ae11,variable,@FacilityAddress,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+1cae3ee6-b14a-4d83-bb06-786a45c3ea34,VOICE,LAB,2020-07-24 07:47:56.132921,2020-08-24 10:02:18.753636,1748,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"1748'",
+'"VisitName'":'"LAB'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"33.wav'",
+        '"tts'":'"lab'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"28.wav'",
+        '"tts'":'"Please enter the testing site and follow signs to testing area. Call the posted phone number upon arrival.'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+2092d5b2-ad30-464b-9d59-36c4c82b1d18,variable,@SIUMessageType,2020-05-15 09:36:42.106187,2020-05-19 19:05:23.732453,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+51a5297e-4dde-493a-8d7e-d08a8f8f94cd,SUBITEM,CONFIRM|Your appointment confirmed!,2020-06-28 05:32:36.81151,,,
+d5513cc7-9ea5-4303-9a50-1fe4c8352bfd,SUBITEM,CANCEL| Yor appointment has been can celled!,2020-06-28 05:32:36.81151,,,
+a6f2b2f9-05ea-4fd9-a51b-3d69209fbf02,SUBITEM,RESCHEDULE| Your request is submitted!,2020-06-28 05:32:36.81151,,,
+e884e043-3f8c-44a2-8f39-8acd35faa3ce,variable1,@MyChartID,2020-05-15 09:36:42.106187,2020-06-29 10:06:21.434029,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+3c6544d4-bb0e-4057-a551-f17fdad15840,variable1,@ZTP28504Preference,2020-05-15 09:36:42.106187,2020-06-29 10:06:21.434029,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+fb1fbf9e-c4df-4c49-9d69-60e041a7a736,VOICEMAIL,LAB,2020-07-29 02:05:23.793741,2020-08-24 10:12:31.773798,1748,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"1748'",
+    '"VisitName'":'"LAB'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"33.wav'",
+        '"tts'":'"lab'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"28.wav'",
+        '"tts'":'"Please enter the testing site and follow signs to testing area. Call the posted phone number upon arrival.'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+a4c0a383-11f0-44ff-9160-37b4422008f5,VOICE,MYCHARTVIRTUAL,2020-07-24 07:32:34.897733,2020-08-24 10:02:18.753636,1744,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"1744'",
+'"VisitName'":'"Mychartvirtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"20.wav'",
+        '"tts'":'"$Please complete the precheck-in process by downloading the Froedtert & MCW mobile app and linking your MyChart account. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+8b603b17-9d03-44cf-873f-bcc81160d65b,VOICE,OFFICE,2020-07-24 07:19:29.007874,2020-08-24 10:02:18.753636,-1,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"-1'",
+'"VisitName'":'"Default'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"29.wav'",
+        '"tts'":'"office'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"35.wav'",
+        '"tts'":'"Please arrive'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time_actual(15)'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"9.wav'",
+        '"tts'":'"For everyone’s safety, we are requiring face coverings and restricting the number of people allowed to accompany you. Please visit froedtert dot com slash safe for more information. If you are currently experiencing any COVID-19 symptoms, call your physician or primary care provider’s office.'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"18'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"19'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"20'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+a3848417-5333-47b6-b925-b8fa698b5628,CODE,SMS,2020-08-14 05:35:13.717958,2020-09-03 05:23:07.562198,210,
+2469d84f-681d-46c5-ab25-ad80cf3ead7a,variable,@PatientSecondryPhone,2020-08-03 06:35:12.284799,,0,
+f09c483c-ebab-4b7f-93d4-2470e79d4c95,variable,@ExternalDepartment,2020-08-03 06:35:12.284799,,0,
+9eb59c13-7e35-4998-9fca-6c0e43253b13,SMS,LAB,2020-07-22 08:32:29.040649,2020-08-10 07:30:32.484675,1748,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"1748'",
+    '"name'":'"LAB'",
+ '"msg_type'" : '"$msgtype'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility : Your lab visit is scheduled on $date at $time with $ExternalDepartment. $msgops.'",
+        '"subItems'":[
+          {
+            '"tag'":'"#Confirm'",
+            '"content'":'"Thank you.Your visit is confirmed. Please follow signs and call the posted phone number upon arrival.'"
+          },
+          {
+            '"tag'":'" #Cancel '",
+            '"content'":'"Your visit has been cancelled. Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect. '"
+          }
+        ]
+      }
+    ]
+  }
+]
+"
+6f35475e-c2ca-4734-899b-cb29d1f95dcd,SMS,DOXIMITYVIRTUAL,2020-07-22 08:28:48.233375,2020-08-10 07:30:32.484675,1747,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"1747'",
+    '"name'":'"DOXIMITYVIRTUAL'",
+ '"msg_type'" : '"$msgtype'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility : Your virtual visit is scheduled on $date at $time with $ExternalDepartment.$msgops.'",        '"subItems'":[
+          {
+            '"tag'":'" #Confirm '",
+            '"content'":'"Thank you. Your visit is confirmed. You will receive a text from your provider inviting you to join the video call.'"
+          },
+          {
+            '"tag'":'" #Cancel '",
+            '"content'":'"Your visit has been cancelled. Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect.'"
+          }
+        ]
+      }
+    ]
+  }
+]
+
+"
+555822e4-dff4-40f8-bd43-6a4fe808c7da,SMS,MYCHARTVIRTUAL,2020-07-22 08:24:55.542612,2020-08-10 07:30:32.484675,1744,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"1744'",
+    '"name'":'"MYCHARTVIRTUAL'",
+ '"msg_type'" : '"$msgtype'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility :Your virtual visit is scheduled on $date at $time with $ExternalDepartment.$msgops.'",
+        '"subItems'":[
+          {
+            '"tag'":'" #Confirm '",
+            '"content'":'"Your visit is confirmed. Download the Froedtert & MCW app to complete precheck-in. More info: help.froodtert.care'"
+          },
+          {
+            '"tag'":'" #Cancel '",
+            '"content'":'"Your visit has been cancelled. Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect.'"
+          }
+        ]
+      }
+    ]
+  }
+]
+"
+bc6639db-247a-431a-8ddb-9c9a68415ef1,variable,@time_duration(),2020-08-04 05:34:46.846124,,0,
+b9db1eb4-9a2d-4231-a97d-60b6c4217897,variable,@time_actual(),2020-08-04 05:34:46.846124,,0,
+54ea50c2-9247-4131-96ce-5b0a2480fe06,CODE,SMS,2020-08-14 05:33:50.745376,,120,
+7efb0c5a-909e-4b7a-b4d8-1500a9549d90,CODE,SMS,2020-08-14 05:34:47.617706,,130,
+bd455a3c-0fa0-49ea-98a7-f6af788f5f8f,CODE,SMS,2020-08-14 05:36:01.519776,,140,
+c7eb93ab-0780-4e83-80dd-0d56b1e0332f,CODE,SMS,2020-08-14 05:36:42.63672,,250,
+4615f2fb-0ab3-4762-8ac1-155c56c6e53d,variable,@DepartmentPhone,2020-08-03 06:36:26.827929,2020-08-24 08:32:21.615346,0,
+0f03a30c-ff4d-4e2f-a296-1e212266c316,VOICEMAIL,MYCHARTVIRTUAL,2020-07-29 02:05:23.793741,2020-08-24 10:15:42.214363,1744,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"1744'",
+    '"VisitName'":'"MyChartVirtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"20.wav'",
+        '"tts'":'"$Please complete the precheck-in process by downloading the Froedtert & MCW mobile app and linking your MyChart account. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+5acaed13-4798-46b1-81f1-88abebadb885,variable1,@ZTP101265Preference,2020-05-15 09:36:42.106187,2020-06-29 10:06:21.434029,0,"[
+   {
+      '"message_type'":'"”Confirmation”'",
+      '"message_content'":'"”This message is for@PatientFirstName.You have an appointment at @FacilityAddress on @apptDay @ apptDate @apptTime.Please text YES to confirm NO to cancel R to reschedule. Text STOP to opt out of future messages.”'"
+   }
+]"
+29711720-4aa4-4bbf-9772-f15cb96f88ab,media,media,2020-08-24 08:41:03.043834,2020-08-28 08:26:06.41756,,"[
+  {
+    '"type'":'"media'",
+    '"text'":'"Hello'",
+    '"wavefile'":'"1.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"this is'",
+    '"wavefile'":'"2.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Froedtert South'",
+    '"wavefile'":'"3.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Froedtert & MCW'",
+    '"wavefile'":'"4.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"calling to remind you of your '",
+    '"wavefile'":'"5.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"visit scheduled on'",
+    '"wavefile'":'"6.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"at'",
+    '"wavefile'":'"7.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"with '",
+    '"wavefile'":'"8.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"For everyone’s safety, we are requiring face coverings and restricting the number of people allowed to accompany you. Please visit froedtert dot com slash safe for more information. If you are currently experiencing any COVID-19 symptoms, call your physician or primary care provider’s office.'",
+    '"wavefile'":'"9.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please be available at this time for a phone call from your provider. You may be contacted by your care team the day of your visit to complete any final steps.'",
+    '"wavefile'":'"10.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please check your e-mail for the link and instructions on accessing your video visit'",
+    '"wavefile'":'"11.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Thank you'",
+    '"wavefile'":'"12.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"To confirm your visit, please press 1'",
+    '"wavefile'":'"13.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"To cancel, press 2'",
+    '"wavefile'":'"14.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"To repeat this message, press 3'",
+    '"wavefile'":'"15.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"To opt out of phone call appointment notifications, press 4'",
+    '"wavefile'":'"16.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Thank you for confirming your visit.'",
+    '"wavefile'":'"17.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Your visit has been cancelled. To reschedule, please call us at'",
+    '"wavefile'":'"18.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Thank you. Your communication preference for phone call appointment notifications has been updated. Please allow 5 business days for your preference to take effect'",
+    '"wavefile'":'"19.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please complete the precheck-in process by downloading the Froedtert & MCW mobile app and linking your MyChart account. You may be contacted by your care team the day of your visit to complete any final steps'",
+    '"wavefile'":'"20.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please be available at this time. You will receive a text message from your provider inviting you to join the video call. You may be contacted by your care team the day of your visit to complete any final steps'",
+    '"wavefile'":'"21.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"You missed your appointment scheduled on'",
+    '"wavefile'":'"22.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Your health is important to us and we’d like to get you rescheduled as soon as possible'",
+    '"wavefile'":'"23.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please call'",
+    '"wavefile'":'"24.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"to reschedule your appointment'",
+    '"wavefile'":'"25.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"To opt out of phone call appointment notifications, press 1.'",
+    '"wavefile'":'"26.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'" Thank you. Your communication preference for phone call appointment notifications has been updated. Please allow 5 business days for your preference to take effect.'",
+    '"wavefile'":'"27.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please enter the testing site and follow signs to testing area. Call the posted phone number upon arrival.'",
+    '"wavefile'":'"28.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"office'",
+    '"wavefile'":'"29.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"If you have any questions, please call us at'",
+    '"wavefile'":'"30.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"telephone'",
+    '"wavefile'":'"31.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"virtual'",
+    '"wavefile'":'"32.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"lab'",
+    '"wavefile'":'"33.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Mobile Lab Testing Unit. Westbend Heath Center'",
+    '"wavefile'":'"34.wav'"
+  },
+  {
+    '"type'":'"media'",
+    '"text'":'"Please arrive'",
+    '"wavefile'":'"35.wav'"
+  },
+  {
+    '"type'":'"variable'",
+    '"tts'":'"Facility'",
+    '"value'":'"$Facility'"
+  },
+  {
+    '"type'":'"variable'",
+    '"tts'":'"External Department'",
+    '"value'":'"$Edn'"
+  },
+  {
+    '"type'":'"variable'",
+    '"tts'":'"Actual appointment time'",
+    '"value'":'"$time_actual(15)'"
+  },
+  {
+    '"type'":'"variable'",
+    '"tts'":'"Actual appointment time duration'",
+    '"value'":'"$time_duration(15)'"
+  }
+]"
+e5ce03d0-3308-49b2-874e-033973eae7f8,VOICEMAIL,OFFICE,2020-07-29 02:05:23.793741,2020-08-24 10:14:00.995967,-1,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"-1'",
+    '"VisitName'":'"Default'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"29.wav'",
+        '"tts'":'"office'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"35.wav'",
+        '"tts'":'"Please arrive'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time_actual(15)'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"9.wav'",
+        '"tts'":'"For everyone’s safety, we are requiring face coverings and restricting the number of people allowed to accompany you. Please visit froedtert dot com slash safe for more information. If you are currently experiencing any COVID-19 symptoms, call your physician or primary care provider’s office.'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"18'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+c490a0f4-b348-452c-b924-dc90b3a90813,TEMPLATELIST,TEMPLATELIST,2020-06-28 06:29:18.503561,,,"
+[
+{
+'"template_id'": '"uuid'",
+'"campaign_id'": '"uuid'",
+'"SMS'":['"160'",'"180'",'"130'"],
+           
+'"VOICE'":[ '"160'",'"180'",'"130'"],
+             
+'"EMAIL'":[ '"160'",'"180'",'"130'"]
+}]"
+8be93f74-980b-4b62-b571-06990143f22d,VOICE,Froedtert,2020-07-21 11:23:33.625681,2020-07-30 07:26:54.289984,0,
+b715969b-576d-484f-ab1a-fa27c80606c1,TEMPVOICE,TEMPVOICE,2020-07-03 10:25:28.122538,,900,
+746a925b-5c06-432d-ad30-f65c7c751e03,VOICE,DOXIMITYVIRTUAL,2020-07-24 07:41:47.301669,2020-08-24 10:02:18.753636,1747,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"1747'",
+'"VisitName'":'"DoximityVirtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"21.wav'",
+        '"tts'":'"Please be available at this time. You will receive a text message from your provider inviting you to join the video call. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+e1e3272a-f688-4d2c-b29b-9232bebab884,SMS,OFFICE,2020-07-22 07:48:57.299844,2020-08-10 12:59:11.04476,-1,"[
+	{
+		'"type'":'"SMS'",
+    '"code'":'"0'",
+    '"msg_type'" : '"$msgtype'",
+    '"name'":'"OFFICE'",
+		'"templates'": [
+			{
+				'"condition'": '"default'",
+				'"content'": '"$Facility: Your office visit is scheduled on $date at $time with $ExternalDepartment. $msgops'",
+				  '"subItems'":[
+          {
+            '"tag'":'" #Confirm'",
+            '"content'":'"Thank you. Your visit is confirmed. Please arrive at time_actual (15). If you have COVID symptoms, call your provider. Face mask and visitor info: froedtert.com/safe'"
+          },
+          {
+            '"tag'":'"#Cancel '",
+            '"content'":'"Your visit has been cancelled. Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect.'"
+          }
+        ]
+      }
+    ]
+  }
+]
+"
+a05fe031-8dda-43c8-a88b-ceb6d71f79e9,VOICEMAIL,DOXIMITYVIRTUAL,2020-07-29 02:05:23.793741,2020-08-24 10:17:07.45377,1747,"[
+  {
+    '"type'":'"VOICEMAIL'",
+    '"VisitType'":'"1747'",
+    '"VisitName'":'"DoximityVirtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"21.wav'",
+        '"tts'":'"Please be available at this time. You will receive a text message from your provider inviting you to join the video call. You may be contacted by your care team the day of your visit to complete any final steps'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"30.wav'",
+        '"tts'":'"If you have any questions, please call us at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"digit'",
+          '"dataValue'":'"$dphone'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+2f40c91e-4ed9-4112-a4e5-83431cbfd0f4,SMS,NSM,2020-07-22 08:36:57.08311,2020-08-10 13:38:58.706144,250,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"250'",
+    '"name'":'"NSM'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility :You missed your appointment scheduled on $date at $time with $ExternalDepartment .Please call $DepartmentPhone to reschedule. Text #Stop to opt out of text appt notifications.'",
+        '"subItems'":[
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect.'"
+          }
+        ]
+      }
+    ]
+  }
+]
+"
+92ff77eb-efb5-4182-a54a-b2d23b131dc2,SMS,VIRTUAL,2020-07-22 08:19:54.406216,2020-08-10 07:30:32.484675,1746,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"1746'",
+ '"msg_type'" : '"$msgtype'",
+    '"name'":'"VIRTUAL'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility :Your virtual visit is scheduled on $date at $time with $ExternalDepartment. $msgops'",
+        '"subItems'":[
+          {
+            '"tag'":'" #Confirm '",
+            '"content'":'"Thank you. Your visit is confirmed.  Check your e-mail for the link and instructions on accessing your video visit.'"
+          },
+          {
+            '"tag'":'"#Cancel '",
+            '"content'":'"Your visit has been cancelled. Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect. '"
+          }
+        ]
+      }
+    ]
+  }
+]
+
+"
+9d332c4d-a7ba-447c-9d09-78b492768ac2,VOICE,NSM,2020-07-24 07:48:50.511779,2020-08-24 09:04:56.858324,250,"[{ 
+'"type'":'"VOICE'",
+'"VisitType'":'"NOSHOW'",
+  '"initAudio'":[
+                        {
+                               '"promptOrder'":'"1'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"1.wav'",
+                               '"tts'":'"Hello'",
+                                '"flag'":'"true'"
+                
+                        },
+                                                       {
+                               '"promptOrder'":'"2'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"2.wav'",
+                               '"tts'":'"this is'",
+                                '"flag'":'"true'"
+                
+                        },
+                                                      {
+                               '"promptOrder'":'"3'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"$wave'",
+                               '"tts'":'"$Facility'",
+                                '"flag'":'"true'"
+                
+                        },
+                        {
+                               '"promptOrder'":'"4'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"22.wav'",
+                               '"tts'":'"You missed your appointment scheduled on'",
+                                '"flag'":'"true'"
+                
+                        },
+
+                        {              '"promptOrder'":'"5'",
+                               '"fileType'":'"dynamic'",                                                                           '"dynamicConfig'":{                                        
+                               '"dataType'":'"date'",
+                               '"dataValue'":'"$date'",
+                               '"dataFormat'":'"MM/DD/YYYY'"
+},
+                                '"flag'":'"true'"
+                        
+                        },
+                        {
+                               '"promptOrder'":'"6'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"7.wav'",
+                               '"tts'":'"at'"       ,
+                                '"flag'":'"true'"
+
+                        },
+                         {
+                               '"promptOrder'":'"7'",
+                               '"fileType'":'"dynamic'",                                        
+                               '"dynamicConfig'":{
+                               '"dataType'":'"time'",        
+                               '"dataValue'":'"$time'",                        
+                               '"dataFormat'":'"hh:mm a'"
+                                },
+                                '"flag'":'"true'"
+                        
+                        },                        
+                        {
+                               '"promptOrder'":'"8'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"8.wav'",
+                               '"tts'":'"with'",
+                                '"flag'":'"true'"
+                
+                        },
+
+        {
+                               '"promptOrder'":'"9'",
+                               '"fileType'":'"dynamic'",                                
+                               '"dynamicConfig'":{                                        
+                               '"dataType'":'"tts'",
+                               '"dataValue'":'"$Edn'"
+                                
+                                },
+                                '"flag'":'"true'"
+                
+                        },
+                                                       {
+                               '"promptOrder'":'"10'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"23.wav'",
+                               '"tts'":'"Your health is important to us and we’d like to get you rescheduled as soon as possible'",
+                                '"flag'":'"true'"
+                
+                        },
+                        {
+                               '"promptOrder'":'"11'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"24.wav'",
+                               '"tts'":'"Please call'",
+                                '"flag'":'"true'"
+                
+                        },
+   {
+                               '"promptOrder'":'"12'",
+                               '"fileType'":'"dynamic'",                                
+                               '"dynamicConfig'":{                                        
+                               '"dataType'":'"digit'",
+                               '"dataValue'":'"$dphone'"
+                                
+                                },
+                                '"flag'":'"true'"
+                
+                        },
+ 	{
+                               '"promptOrder'":'"13'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"25.wav'",
+                               '"tts'":'"to reschedule your appointment'",
+                             '"flag'":'"true'"
+                
+                        },
+{
+                               '"promptOrder'":'"14'",
+                               '"fileType'":'"static'",                                        
+                               '"fileName'":'"12.wav'",
+                               '"tts'":'"Thank you'",
+                             '"flag'":'"true'"
+                
+                        },
+
+
+                        {
+                       '"promptOrder'":'"15'",
+                       '"fileType'":'"static'",                                        
+                       '"fileName'":'"26.wav'",
+                       '"tts'":'"To opt out of phone call appointment notifications, press 1'"       ,
+                                '"flag'":'"true'"
+        
+                        },
+                                         {
+                       '"promptOrder'":'"16'",
+                       '"fileType'":'"static'",                                        
+                       '"fileName'":'"19.wav'",
+                       '"tts'":'"Thank you. Your communication preference for phone call appointment notifications has been updated. Please allow 5 business days for your preference to take effect'",
+                                '"flag'":'"true'"
+                        }
+ ]
+     }
+]
+"
+40a4ddcf-65a1-49fc-9363-d0e8e9170ad0,VOICE,VIRTUAL,2020-07-24 07:39:58.675487,2020-08-24 10:02:18.753636,1746,"[
+  {
+    '"type'":'"VOICE'",
+    '"VisitType'":'"1746'",
+    '"VisitName'":'"Virtual'",
+    '"initAudio'":[
+      {
+        '"promptOrder'":'"1'",
+        '"fileType'":'"static'",
+        '"fileName'":'"1.wav'",
+        '"tts'":'"Hello'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"2'",
+        '"fileType'":'"static'",
+        '"fileName'":'"2.wav'",
+        '"tts'":'"this is'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"3'",
+        '"fileType'":'"static'",
+        '"fileName'":'"$wave'",
+        '"tts'":'"$Facility'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"4'",
+        '"fileType'":'"static'",
+        '"fileName'":'"5.wav'",
+        '"tts'":'"calling to remind you of your'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"5'",
+        '"fileType'":'"static'",
+        '"fileName'":'"32.wav'",
+        '"tts'":'"virtual'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"6'",
+        '"fileType'":'"static'",
+        '"fileName'":'"6.wav'",
+        '"tts'":'"visit scheduled on'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"7'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"date'",
+          '"dataValue'":'"$date'",
+          '"dataFormat'":'"MM/DD/YYYY'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"8'",
+        '"fileType'":'"static'",
+        '"fileName'":'"7.wav'",
+        '"tts'":'"at'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"9'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"time'",
+          '"dataValue'":'"$time'",
+          '"dataFormat'":'"hh:mm a'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"10'",
+        '"fileType'":'"static'",
+        '"fileName'":'"8.wav'",
+        '"tts'":'"with'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"11'",
+        '"fileType'":'"dynamic'",
+        '"dynamicConfig'":{
+          '"dataType'":'"tts'",
+          '"dataValue'":'"$Edn'"
+        },
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"12'",
+        '"fileType'":'"static'",
+        '"fileName'":'"11.wav'",
+        '"tts'":'"Please check your e-mail for the link and instructions on accessing your video visit'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"13'",
+        '"fileType'":'"static'",
+        '"fileName'":'"12.wav'",
+        '"tts'":'"Thank you'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"14'",
+        '"fileType'":'"static'",
+        '"fileName'":'"13.wav'",
+        '"tts'":'"To confirm your visit, please press 1'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"15'",
+        '"fileType'":'"static'",
+        '"fileName'":'"14.wav'",
+        '"tts'":'"To cancel press 2'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"16'",
+        '"fileType'":'"static'",
+        '"fileName'":'"15.wav'",
+        '"tts'":'"To repeat this message, press 3'",
+        '"flag'":'"true'"
+      },
+      {
+        '"promptOrder'":'"17'",
+        '"fileType'":'"static'",
+        '"fileName'":'"16.wav'",
+        '"tts'":'"To opt out of phone call appointment notifications, press 4'",
+        '"flag'":'"true'"
+      }
+    ]
+  }
+]"
+32944e11-c208-4928-8560-a6fd7f826c14,SMS,TELEPHONE,2020-07-22 08:13:38.952699,2020-08-10 07:30:32.484675,1745,"[
+  {
+    '"type'":'"SMS'",
+    '"code'":'"1745'",
+    '"name'":'"TELEPHONE'",
+ '"msg_type'" : '"$msgtype'",
+    '"templates'":[
+      {
+        '"condition'":'"default'",
+        '"content'":'"$Facility : Your telephone visit is scheduled on $date at $time with $ExternalDepartment.$msgops'",
+        '"subItems'":[
+          {
+            '"tag'":'"#Confirm '",
+            '"content'":'"Thank you. Your visit is confirmed. Your provider will call this phone number.'"
+          },
+          {
+            '"tag'":'"#Cancel '",
+            '"content'":'"Your visit has been cancelled.Please call $DepartmentPhone to reschedule.'"
+          },
+          {
+            '"tag'":'"#Stop'",
+            '"content'":'"Thank you. Your communication preference for text appointment notifications has been updated. Please allow 5 business days for your preference to take effect. '"
+          }
+        ]
+      }
+    ]
+  }
+]
+"

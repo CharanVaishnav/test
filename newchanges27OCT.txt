@@ -1,0 +1,16 @@
+1) 
+
+ALTER TABLE outbound.dail_list_queue ADD last_status_time varchar ;
+ALTER TABLE outbound.dail_list_queue ALTER COLUMN last_status_time SET DEFAULT ''::character varying;
+
+2) in cisco data scanner 
+
+    var updateQueueQuery = "update outbound.dail_list_queue set updated_date=now(), attempt_status='"+status+"' , "+
+							   "attempt_date='"+attemptDateTimeString+"' , "+"last_status_time='"+attemptDateTimeString+"' "+
+							   " where ref_id='"+refId+"' and last_status_time <> '"+attemptDateTimeString+"'";
+							   
+3)
+
+var zoneDate  = result.getTimestamp("createdatetime")!=null?result.getTimestamp("createdatetime").toLocalDateTime().format(formatter)+"[EST":null;
+
+Timecallwasmadeininstantformat:zoneDate,
